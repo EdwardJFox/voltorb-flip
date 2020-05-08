@@ -1,30 +1,25 @@
-import seedrandom from 'seedrandom';
 import * as ShuffleSeed from 'shuffle-seed';
 
 import Space, { SpaceTypeEnum } from './space';
 
 class Board {
   difficulty: number;
-  seed: string;
-  random: any;
   spaces: Space[][];
   width = 5;
   height = 5;
 
-  constructor(difficulty: number, seed: string) {
+  constructor(difficulty: number) {
     this.difficulty = difficulty;
-    this.seed = seed;
-    this.random = seedrandom(seed);
     this.spaces = [];
   }
 
-  public buildSpaces() {
-    this.spaces = this.generateSpaces();
+  public buildSpaces(random: any) {
+    this.spaces = this.generateSpaces(random);
   }
 
-  public generateSpaces(): Space[][] {
+  public generateSpaces(random: any): Space[][] {
     let toReturn = [];
-    const elements = this.seededElements();
+    const elements = this.seededElements(random);
 
     for(var row = 0; row < this.height; row++) {
       toReturn.push([] as Space[]);
@@ -35,20 +30,24 @@ class Board {
     return toReturn;
   }
 
-  public seededElements(): Space[] {
+  public seededElements(random: any): Space[] {
     let elements: Space[] = [
-      ...this.buildMultipliers(),
+      ...this.buildMultipliers(random),
       ...this.buildVoltorbs(),
       ...this.buildOneSpaces()
     ]
 
-    elements = ShuffleSeed.shuffle(elements, this.seed);
+    elements = ShuffleSeed.shuffle(elements, random.toString(36).substring(2));
     return elements;
   }
 
-  private buildMultipliers(): Space[] {
+  public flipCard(row: number, column: number): Boolean {
+    return this.spaces[row][column].flip();
+  }
+
+  private buildMultipliers(random: any): Space[] {
     return Array(this.numberOfMultipliers()).fill(0).map(() => {
-      if(this.random() < 0.6) {
+      if(random() < 0.6) {
         return new Space(SpaceTypeEnum.Two);
       } else {
         return new Space(SpaceTypeEnum.Three);
@@ -57,15 +56,11 @@ class Board {
   }
 
   private buildVoltorbs() {
-    return Array(this.numberOfVoltorbs()).fill(0).map(() => {
-      return new Space(SpaceTypeEnum.Voltorb);
-    });
+    return Array(this.numberOfVoltorbs()).fill(new Space(SpaceTypeEnum.Voltorb));
   }
 
   private buildOneSpaces() {
-    return Array(this.numberOfOneSpaces()).fill(0).map(() => {
-      return new Space(SpaceTypeEnum.One);
-    });
+    return Array(this.numberOfOneSpaces()).fill(new Space(SpaceTypeEnum.One));
   }
   
   private numberOfMultipliers = () => this.difficulty + 2;
