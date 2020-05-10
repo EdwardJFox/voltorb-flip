@@ -1,8 +1,8 @@
 export enum SpaceTypeEnum {
+  Voltorb,
   One,
   Two,
-  Three,
-  Voltorb
+  Three
 }
 
 export enum SpaceStatusEnum {

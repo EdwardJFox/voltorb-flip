@@ -56,11 +56,11 @@ class Board {
   }
 
   private buildVoltorbs() {
-    return Array(this.numberOfVoltorbs()).fill(new Space(SpaceTypeEnum.Voltorb));
+    return Array(this.numberOfVoltorbs()).fill(0).map(() => new Space(SpaceTypeEnum.Voltorb));
   }
 
   private buildOneSpaces() {
-    return Array(this.numberOfOneSpaces()).fill(new Space(SpaceTypeEnum.One));
+    return Array(this.numberOfOneSpaces()).fill(0).map(() => new Space(SpaceTypeEnum.One));
   }
   
   private numberOfMultipliers = () => this.difficulty + 2;

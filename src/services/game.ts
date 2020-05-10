@@ -10,8 +10,8 @@ export enum GameState {
 
 class Game {
   board!: Board;
-  _seed: string = Math.random().toString(36).substring(2);
-  _difficulty: number = 1;
+  seed: string = Math.random().toString(36).substring(2);
+  difficulty: number = 1;
   random: any;
   points: number = 0;
   state: GameState = GameState.Playing;
@@ -19,28 +19,10 @@ class Game {
   constructor() {
   }
 
-  setup() {
+  public setup() {
     // Ensure that random is maintained between each board as well, from the beginning of the game
     this.random = seedrandom(this.seed);
-    this.board = new Board(this._difficulty);
-  }
-
-  public set seed(seed : string) {
-    this._seed = seed;
-    this.resetGame();
-  }
-
-  public get seed() : string {
-    return this._seed
-  }
-
-  public set difficulty(difficulty : number) {
-    this._difficulty = difficulty;
-    this.resetGame();
-  }
-
-  public get difficulty() : number {
-    return this._difficulty
+    this.board = new Board(this.difficulty);
   }
 
   public startRound(): Space[][] {
@@ -57,9 +39,9 @@ class Game {
   }
 
   public resetGame(): Space[][] {
-    this.random = seedrandom(this._seed);
-    this._difficulty = 1;
-    this.board = new Board(this._difficulty);
+    this.random = seedrandom(this.seed);
+    this.difficulty = 1;
+    this.board = new Board(this.difficulty);
     this.state = GameState.Playing;
     return this.startRound();
   }
