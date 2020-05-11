@@ -1,6 +1,8 @@
 import React from 'react';
 import Space, { SpaceTypeEnum } from '../services/space';
 
+import './BoardSpaceSummary.scss';
+
 interface BoardSpacesSummaryInterface {
   spaces: Space[];
 }
@@ -8,9 +10,16 @@ interface BoardSpacesSummaryInterface {
 const BoardSpacesSummary = ({ spaces }: BoardSpacesSummaryInterface) => {
   console.log("summary")
   return (
-    <div className="spacesSummary">
-      <div className="spacesSummaryMultiplierTotal">{ countOfMultipliers(spaces) }</div>
-      <div className="spacesSummaryVoltorbTotal">{ countOfVoltorbs(spaces) }</div>
+    <div className="space spacesSummary">
+      <div className="spaceBorder">
+        <div className="spaceInner spaceSummaryInner">
+          <div className="spacesSummaryMultiplierTotal">{ countOfMultipliers(spaces) }</div>
+          <div className="spacesSummaryVoltorbTotal">
+            <img src="/voltorb.svg" />
+            <span>{ countOfVoltorbs(spaces) }</span>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

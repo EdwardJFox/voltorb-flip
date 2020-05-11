@@ -1,0 +1,27 @@
+.spacesSummary {
+  .spaceInner {
+    display: flex;
+    flex-direction: column;
+    .spacesSummaryMultiplierTotal, .spacesSummaryVoltorbTotal {
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: #333;
+    }
+    .spacesSummaryMultiplierTotal {
+      flex: 0 0 40%;
+      padding: 0 0.4rem;
+      border-bottom: 0.4rem solid #fff;
+      text-align: right;
+    }
+    .spacesSummaryVoltorbTotal {
+      flex: 0 0 60%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        width: 2.4rem;
+        margin-right: 0.4rem;
+      }
+    }
+  }
+}

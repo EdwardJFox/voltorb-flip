@@ -14,6 +14,7 @@ class Game {
   difficulty: number = 1;
   random: any;
   points: number = 0;
+  totalPoints: number = 0;
   state: GameState = GameState.Playing;
 
   constructor() {
@@ -23,6 +24,11 @@ class Game {
     // Ensure that random is maintained between each board as well, from the beginning of the game
     this.random = seedrandom(this.seed);
     this.board = new Board(this.difficulty);
+  }
+
+  public checkBoard() {
+    const allSpaces = this.board.spaces.reduce((spaces: Space[], row) => [...spaces, ...row]);
+    
   }
 
   public startRound(): Space[][] {

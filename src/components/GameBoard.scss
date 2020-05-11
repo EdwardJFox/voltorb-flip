@@ -1,4 +1,40 @@
+@import 'variables';
+
+.board {
+  height: 48rem;
+  width: 48rem;
+}
 .bottomSummary {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.board, .bottomSummary {
+  .boardRow, .spacesSummary, .boardRow, .boardSpace {
+    &:nth-child(1) {
+      .boardSpace:before, .spaceSummaryInner, &:after {
+        background: $row_one;
+      }
+    }
+    &:nth-child(2) {
+      .boardSpace:before, .spaceSummaryInner, &:after {
+        background: $row_two;
+      }
+    }
+    &:nth-child(3) {
+      .boardSpace:before, .spaceSummaryInner, &:after {
+        background: $row_three;
+      }
+    }
+    &:nth-child(4) {
+      .boardSpace:before, .spaceSummaryInner, &:after {
+        background: $row_four;
+      }
+    }
+    &:nth-child(5) {
+      .boardSpace:before, .spaceSummaryInner, &:after {
+        background: $row_five;
+      }
+    }
+  }
 }

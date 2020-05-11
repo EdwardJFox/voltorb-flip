@@ -35,9 +35,8 @@ class Board {
       ...this.buildMultipliers(random),
       ...this.buildVoltorbs(),
       ...this.buildOneSpaces()
-    ]
-
-    elements = ShuffleSeed.shuffle(elements, random.toString(36).substring(2));
+    ];
+    elements = ShuffleSeed.shuffle(elements, random().toString(36).substring(2));
     return elements;
   }
 
