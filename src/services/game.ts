@@ -56,6 +56,7 @@ class Game {
   public nextRound(): Space[][] {
     if(this.state === GameState.RoundFailed) {
       this.difficulty = 1;
+      this.board.difficulty = this.difficulty;
       this.currentRoundPoints = 0;
     } else {
       if(this.difficulty < 8) {
