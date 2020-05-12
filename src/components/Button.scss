@@ -12,6 +12,14 @@
       background: #1b6e55;
     }
   }
+  &.btn-secondary {
+    background: #3567e0;
+    color: #fff;
+    border: 0.2rem solid #3f4040;
+    &:hover {
+      background: #305ecc;
+    }
+  }
   &.btn-default {
     background: #444;
     color: #fff;

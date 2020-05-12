@@ -10,9 +10,17 @@ export enum SpaceStatusEnum {
   Flipped
 }
 
+export enum SpaceMarkersEnum {
+  Voltorb,
+  One,
+  Two,
+  Three
+}
+
 class Space {
   type: SpaceTypeEnum;
   state = SpaceStatusEnum.Hidden;
+  markers: SpaceMarkersEnum[] = [];
 
   constructor(type: SpaceTypeEnum) {
     this.type = type;
@@ -24,6 +32,14 @@ class Space {
       return false;
     } else {
       return true;
+    }
+  }
+
+  public mark(marking: SpaceMarkersEnum): void {
+    if(this.markers.includes(marking)) {
+      this.markers.splice(this.markers.indexOf(marking), 1);
+    } else {
+      this.markers.push(marking);
     }
   }
 }

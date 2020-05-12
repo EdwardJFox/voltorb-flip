@@ -1,21 +1,23 @@
 import React from 'react';
-import Space, { SpaceStatusEnum, SpaceTypeEnum } from '../services/space';
+import Space, { SpaceStatusEnum, SpaceTypeEnum, SpaceMarkersEnum } from '../services/space';
 
 import './BoardSpace.scss';
 
 interface SpaceInterface {
   space: Space;
-  handleSpaceClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>, space: Space) => void;
+  handleSpaceClick: (space: Space) => void;
 }
 
 const BoardSpace = ({ space, handleSpaceClick }: SpaceInterface) => {
 
   return (
-    <div className={`space boardSpace ${space.state === SpaceStatusEnum.Hidden ? 'hidden' : 'flipped' }`} onClick={(e) => handleSpaceClick(e, space)}>
+    <div className={`space boardSpace ${space.state === SpaceStatusEnum.Hidden ? 'hidden' : 'flipped' }`} onClick={(e) => handleSpaceClick(space)}>
       <div className="spaceBorder">
         <div className="spaceInner">
           <div className="spaceFront">
-
+            <div className="markers">
+              { space.markers.map((marker: SpaceMarkersEnum) => <BoardSpaceMarker marker={marker} />) }
+            </div>
           </div>
           <div className="spaceBack">
             { space.state === SpaceStatusEnum.Flipped &&
@@ -26,6 +28,20 @@ const BoardSpace = ({ space, handleSpaceClick }: SpaceInterface) => {
       </div>
     </div>
   )
+}
+
+const BoardSpaceMarker = ({ marker }: { marker: SpaceMarkersEnum }) =>
+  <div className={`boardSpaceMarker marker_${marker.toString()}`}>
+    { BoardSpaceMarkerContent(marker) }
+  </div>
+
+const BoardSpaceMarkerContent = (marker: SpaceMarkersEnum) => {
+  switch(marker) {
+    case SpaceMarkersEnum.Voltorb:
+      return <img src="/voltorb_marker.svg" />
+    default:
+      return <span>{ marker }</span>
+  }
 }
 
 const BoardSpaceBackContent = (space: Space) => {

@@ -7,7 +7,7 @@ import './BoardRow.scss';
 
 export interface BoardRowInterface {
   spaces: Space[];
-  handleSpaceClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>, space: Space) => void;
+  handleSpaceClick: (space: Space) => void;
   rowIndex: number;
 }
 

@@ -1,0 +1,45 @@
+.gameInputMode {
+  display: flex;
+  padding: 0.4rem;
+  background: #cd704a;
+  border: 0.2rem solid #f09b7f;
+  border-radius: 0.6rem;
+  .markers {
+    flex: 1;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0.4rem;
+    margin-right: 0.4rem;
+    .marker {
+      padding: 0.4rem;
+      &.text {
+        position: relative;
+        span {
+          font-size: 2.2rem;
+        }
+      }
+    }
+  }
+  .flip {
+    flex: 1;
+    span {
+      font-size: 2.2rem;
+    }
+  }
+  .marker, .flip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem;
+    border: 0.2rem solid #2b453d;
+    border-radius: 0.4rem;
+    background: #0a835e;
+    color: #ffda35;
+    cursor: pointer;
+
+    &.selected {
+      border-color: #ffda35;
+    }
+  }
+}
