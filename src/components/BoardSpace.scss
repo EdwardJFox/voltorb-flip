@@ -81,22 +81,22 @@
   position: relative;
   &:before {
     content: '';
-    width: 2rem;
+    width: 1.8rem;
     height: 1rem;
     border-top: 0.4rem solid #fff;
     border-bottom: 0.4rem solid #fff;
     position: absolute;
-    right: -1rem;
-    top: 3.3rem;
+    right: -0.9rem;
+    top: 3.1rem;
   }
   &:after {
     content: '';
     width: 1rem;
-    height: 2rem;
+    height: 1.8rem;
     border-left: 0.4rem solid #fff;
     border-right: 0.4rem solid #fff;
     position: absolute;
-    bottom: -1rem;
-    left: 3.3rem;
+    bottom: -0.9rem;
+    left: 3.1rem;
   }
 }

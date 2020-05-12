@@ -1,0 +1,26 @@
+.gameScore {
+  width: 100%;
+  .gameScoreBorder {
+    border: 0.4rem solid #a0c0b0;
+    border-radius: 0.8rem;
+    background-color: #a0c0b0;
+    margin-bottom: 0.8rem;
+  }
+  .total, .current {
+    display: flex;
+    padding: 0.4rem 0.8rem;
+    background: #fff;
+    border-radius: 0.4rem;
+    .name {
+      flex: 0 0 60%;
+      font-size: 1.6rem;
+      font-weight: 400;
+    }
+    .score {
+      flex: 0 0 40%;
+      font-size: 1.6rem;
+      font-weight: 900;
+      text-align: right;
+    }
+  }
+}

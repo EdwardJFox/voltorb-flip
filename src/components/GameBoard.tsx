@@ -10,7 +10,7 @@ import './GameBoard.scss';
 
 interface BoardInterface {
   board: Board;
-  handleSpaceClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  handleSpaceClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>, space: Space) => void;
   gameState: GameState;
 }
 
@@ -30,7 +30,6 @@ const GameBoard = ({ board, handleSpaceClick, gameState }: BoardInterface)  => {
           )
         }
       </div>
-      { gameState === GameState.GameOver && <p>It's over anakin</p>}
     </div>
   )
 }

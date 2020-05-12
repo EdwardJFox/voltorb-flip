@@ -5,19 +5,13 @@ import './BoardSpace.scss';
 
 interface SpaceInterface {
   space: Space;
-  handleSpaceClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  handleSpaceClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>, space: Space) => void;
 }
 
 const BoardSpace = ({ space, handleSpaceClick }: SpaceInterface) => {
-  const handleCardFlip = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if(space.state === SpaceStatusEnum.Hidden) {
-      space.flip();
-      handleSpaceClick(e);
-    }
-  }
 
   return (
-    <div className={`space boardSpace ${space.state === SpaceStatusEnum.Hidden ? 'hidden' : 'flipped' }`} onClick={handleCardFlip}>
+    <div className={`space boardSpace ${space.state === SpaceStatusEnum.Hidden ? 'hidden' : 'flipped' }`} onClick={(e) => handleSpaceClick(e, space)}>
       <div className="spaceBorder">
         <div className="spaceInner">
           <div className="spaceFront">

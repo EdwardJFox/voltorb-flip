@@ -8,7 +8,6 @@ interface BoardSpacesSummaryInterface {
 }
 
 const BoardSpacesSummary = ({ spaces }: BoardSpacesSummaryInterface) => {
-  console.log("summary")
   return (
     <div className="space spacesSummary">
       <div className="spaceBorder">
