@@ -7,17 +7,11 @@
   .sidebar {
     flex: 0 0 20rem;
     padding: 0.6rem 0.4rem;
-    display: flex;
-    flex-direction: column;
 
-    .details {
-      flex: 1;
-    }
-
-    .actions {
-      flex: 0 1;
+    .controls {
+      text-align: right;
       .btn {
-        width: 100%;
+        margin: 0.8rem 0;
       }
     }
   }

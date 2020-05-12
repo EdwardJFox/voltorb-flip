@@ -18,11 +18,22 @@ export enum InputModeEnum {
   Flipping
 }
 
+const localStorage = window.localStorage;
+
+const getHighScoreStorage = () => {
+  return parseInt(localStorage.getItem('voltorbFlipHiScore') || '0');
+}
+
+const setHighScoreInStorage = (score: number) => {
+  localStorage.setItem('voltorbFlipHiScore', score.toString());
+}
+
 const VoltorbFlip = () => {
   const [game, setGame] = useState(new Game());
   const [seed, setSeed] = useState(game.seed);
   const [showOverlay, setShowOverlay] = useState(false);
   const [inputMode, setInputMode] = useState(InputModeEnum.Flipping);
+  const [highScore, setHighScore] = useState(getHighScoreStorage());
 
   const handleSpaceClick = (space: Space) => {
     if(inputMode === InputModeEnum.Flipping) {
@@ -41,7 +52,10 @@ const VoltorbFlip = () => {
     if(space.state === SpaceStatusEnum.Hidden && game.state === GameState.Playing) {
       space.flip();
       if(game.checkBoard()) {
-        // Animate the cards flipping at the end of the round. This should not be here, display logic 
+        if(game.totalPoints > highScore) {
+          setHighScoreInStorage(game.totalPoints);
+          setHighScore(game.totalPoints);
+        }
         setTimeout(() => {
           game.board.spaces.reduce((spaces: Space[], row: Space[]) => [...spaces, ...row]).forEach((space: Space) => space.flip());
           setGame(Object.create(game));
@@ -87,12 +101,10 @@ const VoltorbFlip = () => {
             <GameStateOverlay gameState={game.state} handleRestartClick={handleRestartClick} handleNextRoundClick={handleNextRoundClick} showOverlay={showOverlay} />
           </div>
           <div className="sidebar">
-            <div className="details">
-              <GameDifficulty difficulty={game.difficulty} />
-              <GameScore totalScore={game.totalPoints} currentRoundScore={game.currentRoundPoints} />
-              <GameInputMode handleInputModeChange={handleInputModeChange} currentInputMode={inputMode} />
-            </div>
-            <div className="actions">
+            <GameDifficulty difficulty={game.difficulty} />
+            <GameScore totalScore={game.totalPoints} currentRoundScore={game.currentRoundPoints} highScore={highScore} />
+            <GameInputMode handleInputModeChange={handleInputModeChange} currentInputMode={inputMode} />
+            <div className="controls">
               <Button handleOnClick={handleRestartClick} type="secondary">Reset</Button>
             </div>
           </div>

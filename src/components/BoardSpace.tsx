@@ -8,27 +8,23 @@ interface SpaceInterface {
   handleSpaceClick: (space: Space) => void;
 }
 
-const BoardSpace = ({ space, handleSpaceClick }: SpaceInterface) => {
-
-  return (
-    <div className={`space boardSpace ${space.state === SpaceStatusEnum.Hidden ? 'hidden' : 'flipped' }`} onClick={(e) => handleSpaceClick(space)}>
-      <div className="spaceBorder">
-        <div className="spaceInner">
-          <div className="spaceFront">
-            <div className="markers">
-              { space.markers.map((marker: SpaceMarkersEnum) => <BoardSpaceMarker marker={marker} />) }
-            </div>
+const BoardSpace = ({ space, handleSpaceClick }: SpaceInterface) =>
+  <div className={`space boardSpace ${space.state === SpaceStatusEnum.Hidden ? 'hidden' : 'flipped' }`} onClick={(e) => handleSpaceClick(space)}>
+    <div className="spaceBorder">
+      <div className="spaceInner">
+        <div className="spaceFront">
+          <div className="markers">
+            { space.markers.map((marker: SpaceMarkersEnum) => <BoardSpaceMarker marker={marker} />) }
           </div>
-          <div className="spaceBack">
-            { space.state === SpaceStatusEnum.Flipped &&
-              BoardSpaceBackContent(space)
-            }
-          </div>
+        </div>
+        <div className="spaceBack">
+          { space.state === SpaceStatusEnum.Flipped &&
+            BoardSpaceBackContent(space)
+          }
         </div>
       </div>
     </div>
-  )
-}
+  </div>
 
 const BoardSpaceMarker = ({ marker }: { marker: SpaceMarkersEnum }) =>
   <div className={`boardSpaceMarker marker_${marker.toString()}`}>
