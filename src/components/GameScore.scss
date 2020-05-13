@@ -1,16 +1,10 @@
 .gameScore {
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 0.4em;
   font-size: 9px;
   .gameScoreBorder {
     border: 0.4em solid #a0c0b0;
     border-radius: 0.8em;
     background-color: #a0c0b0;
-    &.current {
-      grid-column: 1 / 3;
-    }
     .gameScoreInner {
       display: flex;
       padding: 0.4em 0.8em;
@@ -32,6 +26,34 @@
   }
 }
 
+@media screen and (orientation:portrait) {
+  .gameScore {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0.4em;
+    .gameScoreBorder {
+      &.current {
+        grid-column: 1 / 3;
+      }
+    }
+  }
+}
+
+@media screen and (orientation:landscape) {
+  .gameScore {
+    .gameScoreBorder {
+      margin-bottom: 0.4em;
+    }
+  }
+}
+
+@media screen and (max-width: 900px) and (orientation: landscape) {
+  .gameScore {
+    .gameScoreBorder {
+      font-size: 9px;
+    }
+  }
+}
 
 @media screen and (min-width: 767px) {
   .gameScore {

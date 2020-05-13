@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-import './VoltorbFlip.scss';
 import GameBoard from './GameBoard';
 import Game, { GameState } from '../services/game';
 import GameScore from './GameScore';
@@ -9,6 +8,8 @@ import GameDifficulty from './GameDifficulty';
 import GameStateOverlay from './GameStateOverlay';
 import GameInputMode from './GameInputMode';
 import Button from './Button';
+
+import './VoltorbFlip.scss';
 
 export enum InputModeEnum {
   MarkingVoltorb,
@@ -114,7 +115,7 @@ const VoltorbFlip = () => {
                 </div>
               </div>
             </div>
-            
+            <footer>Created by <a href="https://twitter.com/icemaz" target="_blank" rel="noopener">@icemaz</a> - <a href="https://github.com/EdwardJFox/voltorb-flip" target="_blank" rel="noopener">GitHub</a></footer>
           </div>
         </React.Fragment>
       }
