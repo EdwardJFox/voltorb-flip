@@ -8,13 +8,8 @@ describe('Board class', () => {
     test('creates the expected 2d array structure for the game board', () => {
       const random = seedrandom('testSeed');
       const output = new Board(2).generateSpaces(random);
-      expect(output.map((spaces: Space[]) => spaces.map((space: Space) => space.type))).toEqual([
-        [SpaceTypeEnum.Three, SpaceTypeEnum.Voltorb, SpaceTypeEnum.One, SpaceTypeEnum.One, SpaceTypeEnum.Two],
-        [SpaceTypeEnum.One, SpaceTypeEnum.One, SpaceTypeEnum.One, SpaceTypeEnum.Voltorb, SpaceTypeEnum.One],
-        [SpaceTypeEnum.One, SpaceTypeEnum.One, SpaceTypeEnum.Voltorb, SpaceTypeEnum.One, SpaceTypeEnum.One],
-        [SpaceTypeEnum.Voltorb, SpaceTypeEnum.One, SpaceTypeEnum.Voltorb, SpaceTypeEnum.Voltorb, SpaceTypeEnum.One],
-        [SpaceTypeEnum.One, SpaceTypeEnum.Three, SpaceTypeEnum.Voltorb, SpaceTypeEnum.Three, SpaceTypeEnum.One]
-      ]);
+      
+      expect(output.map((spaces: Space[]) => spaces.map((space: Space) => space.type))).toMatchSnapshot();
     });
   });
 
@@ -34,104 +29,56 @@ describe('Board class', () => {
       const random = seedrandom('testSeed');
       const output = new Board(1).seededElements(random);
       expectedValues(16, 3, 6, output);
-      expect(output.map((space: Space) => space.type)).toEqual([
-        SpaceTypeEnum.Voltorb, SpaceTypeEnum.Voltorb, SpaceTypeEnum.One, SpaceTypeEnum.One, SpaceTypeEnum.Two,
-        SpaceTypeEnum.One, SpaceTypeEnum.One, SpaceTypeEnum.One, SpaceTypeEnum.Voltorb, SpaceTypeEnum.One,
-        SpaceTypeEnum.One, SpaceTypeEnum.One, SpaceTypeEnum.Voltorb, SpaceTypeEnum.One, SpaceTypeEnum.One,
-        SpaceTypeEnum.Voltorb, SpaceTypeEnum.One, SpaceTypeEnum.One, SpaceTypeEnum.One, SpaceTypeEnum.One,
-        SpaceTypeEnum.One, SpaceTypeEnum.Three, SpaceTypeEnum.Voltorb, SpaceTypeEnum.Three, SpaceTypeEnum.One
-      ]);
+      expect(output.map((space: Space) => space.type)).toMatchSnapshot();
     });
 
     test('generates the expected array of elements at difficulty 2', () => {
       const random = seedrandom('testSeed');
       const output = new Board(2).seededElements(random);
       expectedValues(14, 4, 7, output);
-      expect(output.map((space: Space) => space.type)).toEqual([
-        SpaceTypeEnum.Three, SpaceTypeEnum.Voltorb, SpaceTypeEnum.One, SpaceTypeEnum.One, SpaceTypeEnum.Two,
-        SpaceTypeEnum.One, SpaceTypeEnum.One, SpaceTypeEnum.One, SpaceTypeEnum.Voltorb, SpaceTypeEnum.One,
-        SpaceTypeEnum.One, SpaceTypeEnum.One, SpaceTypeEnum.Voltorb, SpaceTypeEnum.One, SpaceTypeEnum.One,
-        SpaceTypeEnum.Voltorb, SpaceTypeEnum.One, SpaceTypeEnum.Voltorb, SpaceTypeEnum.Voltorb, SpaceTypeEnum.One,
-        SpaceTypeEnum.One, SpaceTypeEnum.Three, SpaceTypeEnum.Voltorb, SpaceTypeEnum.Three, SpaceTypeEnum.One
-      ]);
+      expect(output.map((space: Space) => space.type)).toMatchSnapshot();
     });
 
     test('generates the expected array of elements at difficulty 3', () => {
       const random = seedrandom('testSeed');
       const output = new Board(3).seededElements(random);
       expectedValues(12, 5, 8, output);
-      expect(output.map((space: Space) => space.type)).toEqual([
-        SpaceTypeEnum.Three, SpaceTypeEnum.Voltorb, SpaceTypeEnum.One, SpaceTypeEnum.One, SpaceTypeEnum.Two,
-        SpaceTypeEnum.Voltorb, SpaceTypeEnum.One, SpaceTypeEnum.One, SpaceTypeEnum.Voltorb, SpaceTypeEnum.One,
-        SpaceTypeEnum.One, SpaceTypeEnum.One, SpaceTypeEnum.Voltorb, SpaceTypeEnum.One, SpaceTypeEnum.Voltorb,
-        SpaceTypeEnum.Two, SpaceTypeEnum.One, SpaceTypeEnum.Voltorb, SpaceTypeEnum.Voltorb, SpaceTypeEnum.One,
-        SpaceTypeEnum.One, SpaceTypeEnum.Three, SpaceTypeEnum.Voltorb, SpaceTypeEnum.Three, SpaceTypeEnum.One
-      ]);
+      expect(output.map((space: Space) => space.type)).toMatchSnapshot();
     });
 
     test('generates the expected array of elements at difficulty 4', () => {
       const random = seedrandom('testSeed');
       const output = new Board(4).seededElements(random);
       expectedValues(10, 6, 9, output);
-      expect(output.map((space: Space) => space.type)).toEqual([
-        SpaceTypeEnum.Three, SpaceTypeEnum.Voltorb, SpaceTypeEnum.Voltorb, SpaceTypeEnum.Voltorb, SpaceTypeEnum.Two,
-        SpaceTypeEnum.Voltorb, SpaceTypeEnum.One, SpaceTypeEnum.One, SpaceTypeEnum.Two, SpaceTypeEnum.One,
-        SpaceTypeEnum.One, SpaceTypeEnum.One, SpaceTypeEnum.Voltorb, SpaceTypeEnum.One, SpaceTypeEnum.Voltorb,
-        SpaceTypeEnum.Two, SpaceTypeEnum.One, SpaceTypeEnum.Voltorb, SpaceTypeEnum.Voltorb, SpaceTypeEnum.One,
-        SpaceTypeEnum.One, SpaceTypeEnum.Three, SpaceTypeEnum.Voltorb, SpaceTypeEnum.Three, SpaceTypeEnum.One
-      ]);
+      expect(output.map((space: Space) => space.type)).toMatchSnapshot();
     });
 
     test('generates the expected array of elements at difficulty 5', () => {
       const random = seedrandom('testSeed');
       const output = new Board(5).seededElements(random);
       expectedValues(8, 7, 10, output);
-      expect(output.map((space: Space) => space.type)).toEqual([
-        SpaceTypeEnum.Three, SpaceTypeEnum.Voltorb, SpaceTypeEnum.Voltorb, SpaceTypeEnum.Voltorb, SpaceTypeEnum.Two,
-        SpaceTypeEnum.Voltorb, SpaceTypeEnum.One, SpaceTypeEnum.One, SpaceTypeEnum.Two, SpaceTypeEnum.One,
-        SpaceTypeEnum.One, SpaceTypeEnum.Voltorb, SpaceTypeEnum.Two, SpaceTypeEnum.One, SpaceTypeEnum.Voltorb,
-        SpaceTypeEnum.Two, SpaceTypeEnum.One, SpaceTypeEnum.Voltorb, SpaceTypeEnum.Voltorb, SpaceTypeEnum.One,
-        SpaceTypeEnum.One, SpaceTypeEnum.Three, SpaceTypeEnum.Voltorb, SpaceTypeEnum.Three, SpaceTypeEnum.Voltorb
-      ]);
+      expect(output.map((space: Space) => space.type)).toMatchSnapshot();
     });
 
     test('generates the expected array of elements at difficulty 6', () => {
       const random = seedrandom('testSeed');
       const output = new Board(6).seededElements(random);
       expectedValues(7, 8, 10, output);
-      expect(output.map((space: Space) => space.type)).toEqual([
-        SpaceTypeEnum.Three, SpaceTypeEnum.Voltorb, SpaceTypeEnum.Voltorb, SpaceTypeEnum.Voltorb, SpaceTypeEnum.Two,
-        SpaceTypeEnum.Voltorb, SpaceTypeEnum.One, SpaceTypeEnum.One, SpaceTypeEnum.Two, SpaceTypeEnum.One,
-        SpaceTypeEnum.One, SpaceTypeEnum.Voltorb, SpaceTypeEnum.Two, SpaceTypeEnum.One, SpaceTypeEnum.Voltorb,
-        SpaceTypeEnum.Two, SpaceTypeEnum.Voltorb, SpaceTypeEnum.Voltorb, SpaceTypeEnum.Voltorb, SpaceTypeEnum.One,
-        SpaceTypeEnum.One, SpaceTypeEnum.Three, SpaceTypeEnum.Two, SpaceTypeEnum.Three, SpaceTypeEnum.Voltorb
-      ]);
+      expect(output.map((space: Space) => space.type)).toMatchSnapshot();
     });
 
     test('generates the expected array of elements at difficulty 7', () => {
       const random = seedrandom('testSeed');
       const output = new Board(7).seededElements(random);
       expectedValues(6, 9, 10, output);
-      expect(output.map((space: Space) => space.type)).toEqual([
-        SpaceTypeEnum.Three, SpaceTypeEnum.Two, SpaceTypeEnum.Voltorb, SpaceTypeEnum.Voltorb, SpaceTypeEnum.Two,
-        SpaceTypeEnum.Voltorb, SpaceTypeEnum.One, SpaceTypeEnum.One, SpaceTypeEnum.Two, SpaceTypeEnum.One,
-        SpaceTypeEnum.One, SpaceTypeEnum.Voltorb, SpaceTypeEnum.Two, SpaceTypeEnum.One, SpaceTypeEnum.Voltorb,
-        SpaceTypeEnum.Two, SpaceTypeEnum.Voltorb, SpaceTypeEnum.Voltorb, SpaceTypeEnum.Voltorb, SpaceTypeEnum.One,
-        SpaceTypeEnum.Voltorb, SpaceTypeEnum.Three, SpaceTypeEnum.Two, SpaceTypeEnum.Three, SpaceTypeEnum.Voltorb
-      ]);
+      expect(output.map((space: Space) => space.type)).toMatchSnapshot();
     });
 
     test('generates the expected array of elements at difficulty 8', () => {
       const random = seedrandom('testSeed');
       const output = new Board(8).seededElements(random);
       expectedValues(5, 10, 10, output);
-      expect(output.map((space: Space) => space.type)).toEqual([
-        SpaceTypeEnum.Three, SpaceTypeEnum.Two, SpaceTypeEnum.Voltorb, SpaceTypeEnum.Voltorb, SpaceTypeEnum.Two,
-        SpaceTypeEnum.Voltorb, SpaceTypeEnum.One, SpaceTypeEnum.Voltorb, SpaceTypeEnum.Two, SpaceTypeEnum.One,
-        SpaceTypeEnum.One, SpaceTypeEnum.Voltorb, SpaceTypeEnum.Two, SpaceTypeEnum.One, SpaceTypeEnum.Voltorb,
-        SpaceTypeEnum.Two, SpaceTypeEnum.Voltorb, SpaceTypeEnum.Two, SpaceTypeEnum.Voltorb, SpaceTypeEnum.One,
-        SpaceTypeEnum.Voltorb, SpaceTypeEnum.Three, SpaceTypeEnum.Two, SpaceTypeEnum.Three, SpaceTypeEnum.Voltorb
-      ]);
+      expect(output.map((space: Space) => space.type)).toMatchSnapshot();
     });
   });
 
