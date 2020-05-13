@@ -3,17 +3,15 @@ import Board from '../services/board';
 import Space from '../services/space';
 import BoardRow from './BoardRow';
 import BoardSpacesSummary from './BoardSpacesSummary';
-import { GameState } from '../services/game';
 
 import './GameBoard.scss';
 
 interface BoardInterface {
   board: Board;
   handleSpaceClick: (space: Space) => void;
-  gameState: GameState;
 }
 
-const GameBoard = ({ board, handleSpaceClick, gameState }: BoardInterface)  => {
+const GameBoard = ({ board, handleSpaceClick }: BoardInterface)  => {
   const { spaces } = board;
   return (
     <div className="board">

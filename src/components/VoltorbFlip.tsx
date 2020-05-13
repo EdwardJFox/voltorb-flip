@@ -98,7 +98,7 @@ const VoltorbFlip = () => {
       { game.board && 
         <React.Fragment>
           <div className="boardArea">
-            <GameBoard board={game.board} handleSpaceClick={handleSpaceClick} gameState={game.state} />
+            <GameBoard board={game.board} handleSpaceClick={handleSpaceClick} />
             <GameStateOverlay gameState={game.state} handleRestartClick={handleRestartClick} handleNextRoundClick={handleNextRoundClick} showOverlay={showOverlay} />
           </div>
           <div className="sidebar">

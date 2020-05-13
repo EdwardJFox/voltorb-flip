@@ -52,6 +52,7 @@
 @media screen and (min-width: 1023px){
   .gameInputMode {
     .markers {
+      flex: 1;
       &.text {
         span {
           font-size: 1.8rem;
@@ -59,6 +60,7 @@
       }
     }
     .flip {
+      flex: 1;
       span {
         font-size: 2rem;
       }
