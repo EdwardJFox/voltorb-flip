@@ -1,6 +1,7 @@
 import React from 'react';
 import Space, { SpaceTypeEnum } from '../services/space';
 
+import Voltorb from '../images/voltorb.svg';
 import './BoardSpaceSummary.scss';
 
 interface BoardSpacesSummaryInterface {
@@ -14,7 +15,7 @@ const BoardSpacesSummary = ({ spaces }: BoardSpacesSummaryInterface) => {
         <div className="spaceInner spaceSummaryInner">
           <div className="spacesSummaryMultiplierTotal">{ countOfMultipliers(spaces) }</div>
           <div className="spacesSummaryVoltorbTotal">
-            <img src="/voltorb.svg" alt="Voltorb" />
+            <img src={Voltorb} alt="Voltorb" />
             <span>{ countOfVoltorbs(spaces) }</span>
           </div>
         </div>

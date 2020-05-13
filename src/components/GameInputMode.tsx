@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { InputModeEnum } from './VoltorbFlip';
-
+import VoltorbMarker from '../images/voltorb_marker.svg';
 import './GameInputMode.scss';
 
 interface GameInputModeInterface {
@@ -16,7 +16,7 @@ const GameInputMode = ({ currentInputMode, handleInputModeChange }: GameInputMod
         <div
           className={`marker voltorb ${currentInputMode === InputModeEnum.MarkingVoltorb ? 'selected' : ''}`}
           onClick={() => handleInputModeChange(InputModeEnum.MarkingVoltorb)}>
-            <img src="/voltorb_marker.svg" alt="Voltorb marker" />
+            <img src={VoltorbMarker} alt="Voltorb marker" />
         </div>
         <div
           className={`marker text one ${currentInputMode === InputModeEnum.MarkingOne ? 'selected' : ''}`}

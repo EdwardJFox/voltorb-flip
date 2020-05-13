@@ -6,7 +6,7 @@ import './GameStateOverlay.scss';
 
 const Overlay = ({ children, show, className='' }: any) =>
   <div className={`overlay ${className} ${show ? 'show' : ''}`}>
-    <div className="overlayInner">
+    <div className="overlayInner" >
       { children }
     </div>
   </div>

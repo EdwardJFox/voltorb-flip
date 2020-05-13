@@ -1,6 +1,9 @@
 import React from 'react';
 import Space, { SpaceStatusEnum, SpaceTypeEnum, SpaceMarkersEnum } from '../services/space';
 
+import VoltorbMarker from '../images/voltorb_marker.svg';
+import Voltorb from '../images/voltorb.svg';
+
 import './BoardSpace.scss';
 
 interface SpaceInterface {
@@ -34,7 +37,7 @@ const BoardSpaceMarker = ({ marker }: { marker: SpaceMarkersEnum }) =>
 const BoardSpaceMarkerContent = (marker: SpaceMarkersEnum) => {
   switch(marker) {
     case SpaceMarkersEnum.Voltorb:
-      return <img src="/voltorb_marker.svg" alt="Voltorb marker" />
+      return <img src={VoltorbMarker} alt="Voltorb marker" />
     default:
       return <span>{ marker }</span>
   }
@@ -44,7 +47,7 @@ const BoardSpaceBackContent = (space: Space) => {
   switch(space.type) {
     case SpaceTypeEnum.Voltorb:
       return (
-        <div className="spaceVoltorb"><span><img src="/voltorb.svg" alt="Voltorb space" /></span></div>
+        <div className="spaceVoltorb"><span><img src={Voltorb} alt="Voltorb space" /></span></div>
       )
     default:
       return (
