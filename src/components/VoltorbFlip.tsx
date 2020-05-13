@@ -30,10 +30,18 @@ const setHighScoreInStorage = (score: number) => {
 
 const VoltorbFlip = () => {
   const [game, setGame] = useState(new Game());
-  const [seed, setSeed] = useState(game.seed);
+  // const [seed, setSeed] = useState(game.seed);
   const [showOverlay, setShowOverlay] = useState(false);
   const [inputMode, setInputMode] = useState(InputModeEnum.Flipping);
   const [highScore, setHighScore] = useState(getHighScoreStorage());
+
+  useEffect(() => {
+    // setSeed(game.seed);
+    game.setup();
+    game.board.buildSpaces(game.random);
+    setGame(Object.create(game));
+  // eslint-disable-next-line
+  }, []);
 
   const handleSpaceClick = (space: Space) => {
     if(inputMode === InputModeEnum.Flipping) {
@@ -68,13 +76,6 @@ const VoltorbFlip = () => {
       setGame(Object.create(game));  
     }
   }
-
-  useEffect(() => {
-    setSeed(game.seed);
-    game.setup();
-    game.board.buildSpaces(game.random);
-    setGame(Object.create(game));
-  }, []);
 
   const handleRestartClick = () => {
     game.resetGame();

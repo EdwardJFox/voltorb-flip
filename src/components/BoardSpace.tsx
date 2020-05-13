@@ -9,10 +9,10 @@ interface SpaceInterface {
 }
 
 const BoardSpace = ({ space, handleSpaceClick }: SpaceInterface) =>
-  <div className={`space boardSpace ${space.state === SpaceStatusEnum.Hidden ? 'hidden' : 'flipped' }`} onClick={(e) => handleSpaceClick(space)}>
+  <div className={`space boardSpace ${space.state === SpaceStatusEnum.Hidden ? 'hidden' : 'flipped' }`}>
     <div className="spaceBorder">
       <div className="spaceInner">
-        <div className="spaceFront">
+        <div className="spaceFront" onClick={(e) => handleSpaceClick(space)}>
           <div className="markers">
             { space.markers.map((marker: SpaceMarkersEnum) => <BoardSpaceMarker marker={marker} />) }
           </div>
@@ -34,7 +34,7 @@ const BoardSpaceMarker = ({ marker }: { marker: SpaceMarkersEnum }) =>
 const BoardSpaceMarkerContent = (marker: SpaceMarkersEnum) => {
   switch(marker) {
     case SpaceMarkersEnum.Voltorb:
-      return <img src="/voltorb_marker.svg" />
+      return <img src="/voltorb_marker.svg" alt="Voltorb marker" />
     default:
       return <span>{ marker }</span>
   }
@@ -44,7 +44,7 @@ const BoardSpaceBackContent = (space: Space) => {
   switch(space.type) {
     case SpaceTypeEnum.Voltorb:
       return (
-        <div className="spaceVoltorb"><span><img src="/voltorb.svg" /></span></div>
+        <div className="spaceVoltorb"><span><img src="/voltorb.svg" alt="Voltorb space" /></span></div>
       )
     default:
       return (

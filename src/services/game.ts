@@ -18,9 +18,6 @@ class Game {
   totalPoints: number = 0;
   state: GameState = GameState.Playing;
 
-  constructor() {
-  }
-
   public setup() {
     // Ensure that random is maintained between each board as well, from the beginning of the game
     this.random = seedrandom(this.seed);

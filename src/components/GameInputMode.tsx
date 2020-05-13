@@ -16,7 +16,7 @@ const GameInputMode = ({ currentInputMode, handleInputModeChange }: GameInputMod
         <div
           className={`marker voltorb ${currentInputMode === InputModeEnum.MarkingVoltorb ? 'selected' : ''}`}
           onClick={() => handleInputModeChange(InputModeEnum.MarkingVoltorb)}>
-            <img src="/voltorb_marker.svg" />
+            <img src="/voltorb_marker.svg" alt="Voltorb marker" />
         </div>
         <div
           className={`marker text one ${currentInputMode === InputModeEnum.MarkingOne ? 'selected' : ''}`}

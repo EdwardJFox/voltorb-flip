@@ -14,7 +14,7 @@ const BoardSpacesSummary = ({ spaces }: BoardSpacesSummaryInterface) => {
         <div className="spaceInner spaceSummaryInner">
           <div className="spacesSummaryMultiplierTotal">{ countOfMultipliers(spaces) }</div>
           <div className="spacesSummaryVoltorbTotal">
-            <img src="/voltorb.svg" />
+            <img src="/voltorb.svg" alt="Voltorb" />
             <span>{ countOfVoltorbs(spaces) }</span>
           </div>
         </div>
