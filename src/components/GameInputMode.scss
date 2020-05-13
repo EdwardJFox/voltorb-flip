@@ -43,13 +43,16 @@
     color: #ffda35;
     cursor: pointer;
 
+    &:hover {
+      background: #097957;
+    }
     &.selected {
       border-color: #ffda35;
     }
   }
 }
 
-@media screen and (min-width: 1023px){
+@media screen and (min-width: 1024px){
   .gameInputMode {
     .markers {
       flex: 1;
