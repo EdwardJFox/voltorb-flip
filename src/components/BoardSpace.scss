@@ -46,28 +46,30 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 1.6em;
-        height: 1.6em;
+        width: 1.5em;
+        height: 1.5em;
         font-size: 1.2em;
         font-weight: 700;
         color: #ffda35;
-
+        img {
+          width: 100%;
+        }
         // Voltorb
         &.marker_0 {
-          top: 4px;
-          left: 4px;
+          top: 2px;
+          left: 2px;
         }
         &.marker_1 {
-          top: 4px;
-          right: 4px;
+          top: 2px;
+          right: 2px;
         }
         &.marker_2 {
-          bottom: 4px;
-          left: 4px;
+          bottom: 2px;
+          left: 2px;
         }
         &.marker_3 {
-          bottom: 4px;
-          right: 4px;
+          bottom: 2px;
+          right: 2px;
         }
       }
     }
