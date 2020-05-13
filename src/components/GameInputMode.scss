@@ -1,18 +1,18 @@
 .gameInputMode {
   display: flex;
-  padding: 0.4rem;
+  padding: 0.4em;
   background: #cd704a;
-  border: 0.2rem solid #f09b7f;
-  border-radius: 0.6rem;
+  border: 0.2em solid #f09b7f;
+  border-radius: 0.6em;
   .markers {
     flex: 1;
     display: grid;
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 0.4rem;
-    margin-right: 0.4rem;
+    grid-gap: 0.4em;
+    margin-right: 0.4em;
     .marker {
-      padding: 0.6rem;
+      padding: 0.6em;
       &.voltorb {
         img {
           width: 100%;
@@ -21,7 +21,7 @@
       &.text {
         position: relative;
         span {
-          font-size: 2.4rem;
+          font-size: 2.4em;
         }
       }
     }
@@ -29,16 +29,16 @@
   .flip {
     flex: 1;
     span {
-      font-size: 2.6rem;
+      font-size: 2.6em;
     }
   }
   .marker, .flip {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.6rem;
-    border: 0.2rem solid #2b453d;
-    border-radius: 0.4rem;
+    padding: 0.6em;
+    border: 0.2em solid #2b453d;
+    border-radius: 0.4em;
     background: #0a835e;
     color: #ffda35;
     cursor: pointer;
@@ -55,14 +55,14 @@
       flex: 1;
       &.text {
         span {
-          font-size: 1.8rem;
+          font-size: 1.8em;
         }
       }
     }
     .flip {
       flex: 1;
       span {
-        font-size: 2rem;
+        font-size: 2em;
       }
     }
   }

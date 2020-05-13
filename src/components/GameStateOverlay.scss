@@ -12,6 +12,7 @@
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.4s;
+  font-size: 10px;
 
   &.show {
     pointer-events: all;
@@ -19,15 +20,15 @@
   }
   .overlayInner {
     width: 80%;
-    padding: 0.8rem;
-    border: 0.6rem solid #29a46a;
-    border-radius: 0.6rem;
+    padding: 0.8em;
+    border: 0.6em solid #29a46a;
+    border-radius: 0.6em;
     color: #333;
     background-color: #fff;
     box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.45);
 
     .btn {
-      margin-right: 0.6rem;
+      margin-right: 0.6em;
     }
   }
 
@@ -38,5 +39,11 @@
       background-position: right;
       background-size: 50%;
     }
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .overlay {
+    font-size: initial;
   }
 }

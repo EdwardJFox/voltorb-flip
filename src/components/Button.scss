@@ -1,8 +1,8 @@
 .btn {
   border: none;
-  border-radius: 0.4rem;
-  padding: 0.4rem 0.8rem;
-  font-size: 1.2rem;
+  border-radius: 0.4em;
+  padding: 0.4em 0.8em;
+  font-size: 1.2em;
   cursor: pointer;
 
   &.btn-primary {
@@ -15,7 +15,7 @@
   &.btn-secondary {
     background: #3567e0;
     color: #fff;
-    border: 0.2rem solid #3f4040;
+    border: 0.2em solid #3f4040;
     &:hover {
       background: #305ecc;
     }

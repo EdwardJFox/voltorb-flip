@@ -114,6 +114,7 @@ const VoltorbFlip = () => {
                 </div>
               </div>
             </div>
+            
           </div>
         </React.Fragment>
       }
