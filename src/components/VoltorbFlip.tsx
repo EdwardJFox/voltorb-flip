@@ -105,7 +105,7 @@ const VoltorbFlip = () => {
             <GameScore totalScore={game.totalPoints} currentRoundScore={game.currentRoundPoints} highScore={highScore} />
             <GameInputMode handleInputModeChange={handleInputModeChange} currentInputMode={inputMode} />
             <div className="controls">
-              <Button handleOnClick={handleRestartClick} type="secondary">Reset</Button>
+              <Button handleOnClick={handleRestartClick} type="secondary">Start new game</Button>
             </div>
           </div>
         </React.Fragment>
