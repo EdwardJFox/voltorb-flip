@@ -1,13 +1,13 @@
 .space {
-  height: 8rem;
-  width: 8rem;
-  padding: 0.6rem;
+  height: 8em;
+  width: 8em;
+  padding: 0.6em;
 
   .spaceBorder {
-    border: 0.4rem solid #fff;
-    border-radius: 0.2rem;
-    height: 6.8rem;
-    width: 6.8rem;
+    border: 0.4em solid #fff;
+    border-radius: 0.2em;
+    height: 6.8em;
+    width: 6.8em;
     position: relative;
     z-index: 20;
   }
@@ -18,7 +18,7 @@
   }
 
   .spaceInner {
-    transition: 0.6s;
+    transition: transform 0.6s;
     transform-style: preserve-3d;
     position: relative;
     
@@ -26,8 +26,8 @@
       backface-visibility: hidden;
       position: absolute;
       top: 0px;
-      height: 6rem;
-      width: 6rem;
+      height: 6em;
+      width: 6em;
       backface-visibility: hidden;
       position: absolute;
       top: 0;
@@ -46,9 +46,9 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 1.6rem;
-        height: 1.6rem;
-        font-size: 1.2rem;
+        width: 1.6em;
+        height: 1.6em;
+        font-size: 1.2em;
         font-weight: 700;
         color: #ffda35;
 
@@ -74,7 +74,7 @@
 
     .spaceBack {
       background: #b88783;
-      border: 0.2rem solid #925253;
+      border: 0.2em solid #925253;
       transform: rotateY(180deg);
       display: flex;
       align-items: center;
@@ -82,14 +82,14 @@
 
 
       .spaceMultiplier {
-        font-size: 2.8rem;
+        font-size: 2.8em;
         font-weight: 700;
         color: #3d1714;
       }
 
       .spaceVoltorb {
         img {
-          width: 4rem;
+          width: 4em;
         }
       }
     }
@@ -112,22 +112,22 @@
   position: relative;
   &:before {
     content: '';
-    width: 1.8rem;
-    height: 1rem;
-    border-top: 0.4rem solid #fff;
-    border-bottom: 0.4rem solid #fff;
+    width: 1.8em;
+    height: 1em;
+    border-top: 0.4em solid #fff;
+    border-bottom: 0.4em solid #fff;
     position: absolute;
-    right: -0.9rem;
-    top: 3.1rem;
+    right: -0.9em;
+    top: 3.1em;
   }
   &:after {
     content: '';
-    width: 1rem;
-    height: 1.8rem;
-    border-left: 0.4rem solid #fff;
-    border-right: 0.4rem solid #fff;
+    width: 1em;
+    height: 1.8em;
+    border-left: 0.4em solid #fff;
+    border-right: 0.4em solid #fff;
     position: absolute;
-    bottom: -0.9rem;
-    left: 3.1rem;
+    bottom: -0.9em;
+    left: 3.1em;
   }
 }
