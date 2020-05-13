@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/voltorb-flip/static/css/main.c4359da8.chunk.css",
+    "main.css": "/voltorb-flip/static/css/main.96680b16.chunk.css",
     "main.js": "/voltorb-flip/static/js/main.2cd872d9.chunk.js",
     "main.js.map": "/voltorb-flip/static/js/main.2cd872d9.chunk.js.map",
     "runtime-main.js": "/voltorb-flip/static/js/runtime-main.2d2e4099.js",
@@ -8,9 +8,9 @@
     "static/js/2.0315de72.chunk.js": "/voltorb-flip/static/js/2.0315de72.chunk.js",
     "static/js/2.0315de72.chunk.js.map": "/voltorb-flip/static/js/2.0315de72.chunk.js.map",
     "index.html": "/voltorb-flip/index.html",
-    "precache-manifest.3e12c0f9b2ccd2fd1c04bfc308e0a78a.js": "/voltorb-flip/precache-manifest.3e12c0f9b2ccd2fd1c04bfc308e0a78a.js",
+    "precache-manifest.94b2819c3e3a7158329dd9db3f0c6936.js": "/voltorb-flip/precache-manifest.94b2819c3e3a7158329dd9db3f0c6936.js",
     "service-worker.js": "/voltorb-flip/service-worker.js",
-    "static/css/main.c4359da8.chunk.css.map": "/voltorb-flip/static/css/main.c4359da8.chunk.css.map",
+    "static/css/main.96680b16.chunk.css.map": "/voltorb-flip/static/css/main.96680b16.chunk.css.map",
     "static/js/2.0315de72.chunk.js.LICENSE.txt": "/voltorb-flip/static/js/2.0315de72.chunk.js.LICENSE.txt",
     "static/media/BoardSpace.scss": "/voltorb-flip/static/media/card_bg.bf15fab0.svg",
     "static/media/GameStateOverlay.scss": "/voltorb-flip/static/media/voltorb.636f6788.svg",
@@ -19,7 +19,7 @@
   "entrypoints": [
     "static/js/runtime-main.2d2e4099.js",
     "static/js/2.0315de72.chunk.js",
-    "static/css/main.c4359da8.chunk.css",
+    "static/css/main.96680b16.chunk.css",
     "static/js/main.2cd872d9.chunk.js"
   ]
 }
