@@ -115,7 +115,7 @@ const VoltorbFlip = () => {
                 </div>
               </div>
             </div>
-            <footer>Created by <a href="https://twitter.com/icemaz" target="_blank" rel="noopener">@icemaz</a> - <a href="https://github.com/EdwardJFox/voltorb-flip" target="_blank" rel="noopener">GitHub</a></footer>
+            <footer>Created by <a href="https://twitter.com/icemaz" target="_blank" rel="noopener noreferrer">@icemaz</a> - <a href="https://github.com/EdwardJFox/voltorb-flip" target="_blank" rel="noopener noreferrer">GitHub</a></footer>
           </div>
         </React.Fragment>
       }
