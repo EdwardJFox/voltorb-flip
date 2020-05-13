@@ -12,7 +12,7 @@
     grid-gap: 0.4rem;
     margin-right: 0.4rem;
     .marker {
-      padding: 0.4rem;
+      padding: 0.6rem;
       &.voltorb {
         img {
           width: 100%;
@@ -21,7 +21,7 @@
       &.text {
         position: relative;
         span {
-          font-size: 2.2rem;
+          font-size: 2.4rem;
         }
       }
     }
@@ -29,7 +29,7 @@
   .flip {
     flex: 1;
     span {
-      font-size: 2.2rem;
+      font-size: 2.6rem;
     }
   }
   .marker, .flip {
@@ -45,6 +45,23 @@
 
     &.selected {
       border-color: #ffda35;
+    }
+  }
+}
+
+@media screen and (min-width: 1023px){
+  .gameInputMode {
+    .markers {
+      &.text {
+        span {
+          font-size: 1.8rem;
+        }
+      }
+    }
+    .flip {
+      span {
+        font-size: 2rem;
+      }
     }
   }
 }

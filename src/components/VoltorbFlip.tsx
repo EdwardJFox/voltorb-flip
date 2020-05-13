@@ -102,11 +102,17 @@ const VoltorbFlip = () => {
             <GameStateOverlay gameState={game.state} handleRestartClick={handleRestartClick} handleNextRoundClick={handleNextRoundClick} showOverlay={showOverlay} />
           </div>
           <div className="sidebar">
-            <GameDifficulty difficulty={game.difficulty} />
-            <GameScore totalScore={game.totalPoints} currentRoundScore={game.currentRoundPoints} highScore={highScore} />
-            <GameInputMode handleInputModeChange={handleInputModeChange} currentInputMode={inputMode} />
-            <div className="controls">
-              <Button handleOnClick={handleRestartClick} type="secondary">Start new game</Button>
+            <div className="gameMenu">
+              <div className="details">
+                <GameDifficulty difficulty={game.difficulty} />
+                <GameScore totalScore={game.totalPoints} currentRoundScore={game.currentRoundPoints} highScore={highScore} />
+              </div>
+              <div className="inputs">
+                <GameInputMode handleInputModeChange={handleInputModeChange} currentInputMode={inputMode} />
+                <div className="controls">
+                  <Button handleOnClick={handleRestartClick} type="secondary">Start new game</Button>
+                </div>
+              </div>
             </div>
           </div>
         </React.Fragment>

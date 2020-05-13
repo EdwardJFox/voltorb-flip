@@ -11,14 +11,15 @@
     padding: 0.4rem 0.8rem;
     background: #fff;
     border-radius: 0.4rem;
+    .name, .score {
+      font-size: 1.6rem;
+    }
     .name {
       flex: 0 0 65%;
-      font-size: 1.6rem;
       font-weight: 400;
     }
     .score {
       flex: 0 0 35%;
-      font-size: 1.6rem;
       font-weight: 900;
       text-align: right;
     }
