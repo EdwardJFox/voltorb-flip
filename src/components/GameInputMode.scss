@@ -13,6 +13,11 @@
     margin-right: 0.4rem;
     .marker {
       padding: 0.4rem;
+      &.voltorb {
+        img {
+          width: 100%;
+        }
+      }
       &.text {
         position: relative;
         span {
