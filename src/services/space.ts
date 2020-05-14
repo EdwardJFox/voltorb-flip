@@ -42,6 +42,14 @@ class Space {
       this.markers.push(marking);
     }
   }
+
+  public isFlipped(): boolean {
+    return this.state === SpaceStatusEnum.Flipped;
+  }
+
+  public isMultiplier(): boolean {
+    return this.type > SpaceMarkersEnum.Two;
+  }
 }
 
 export default Space;

@@ -17,7 +17,7 @@ const GameIntermissionOverlay = ({ handleNextRoundClick }: any) =>
     <Button handleOnClick={handleNextRoundClick} type="primary">Next round</Button>
   </React.Fragment>
 
-const GameRoundFailedOverlay = ({ handleNextRoundClick, handleRestartClick }: any) =>
+const GameRoundLostOverlay = ({ handleNextRoundClick, handleRestartClick }: any) =>
   <React.Fragment>
     <h2>Oh no a Voltorb!</h2>
     <div className="btnGroup">
@@ -38,8 +38,8 @@ const GameStateOverlay = ({ showOverlay, gameState, handleNextRoundClick, handle
     case GameState.Intermission: {
       return <Overlay show={showOverlay}><GameIntermissionOverlay handleNextRoundClick={handleNextRoundClick} /></Overlay>
     }
-    case GameState.RoundFailed: {
-      return <Overlay show={showOverlay} className="intermission"><GameRoundFailedOverlay handleNextRoundClick={handleNextRoundClick} handleRestartClick={handleRestartClick} /></Overlay>
+    case GameState.RoundLost: {
+      return <Overlay show={showOverlay} className="intermission"><GameRoundLostOverlay handleNextRoundClick={handleNextRoundClick} handleRestartClick={handleRestartClick} /></Overlay>
     }
     default: {
       return null;

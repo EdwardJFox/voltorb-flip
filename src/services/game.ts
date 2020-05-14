@@ -5,37 +5,38 @@ import Space, { SpaceStatusEnum, SpaceTypeEnum } from './space';
 
 export enum GameState {
   Playing,
-  RoundFailed,
+  RoundLost,
   Intermission
 }
 
 class Game {
   board!: Board;
   seed: string = this.randomSeed();
-  difficulty: number = 1;
   random: any;
   currentRoundPoints: number = 0;
   totalPoints: number = 0;
   state: GameState = GameState.Playing;
+  flippedMultipliers: number = 0;
 
   public setup() {
     // Ensure that random is maintained between each board as well, from the beginning of the game
     this.random = seedrandom(this.seed);
-    this.board = new Board(this.difficulty);
+    this.board = new Board(1);
   }
 
   /**
    * Return true for a change in state
    */
   public checkBoard(): Boolean {
-    const allSpaces = this.board.spaces.reduce((spaces: Space[], row) => [...spaces, ...row]);
+    const allSpaces = this.board.allSpaces();
     const allFlippedSpaces = allSpaces.filter((space) => space.state === SpaceStatusEnum.Flipped);
     const allHigherMultipliers = allSpaces.filter((space) => space.type > 1);
     const allFlippedMultipliers = allFlippedSpaces.filter((space) => space.type > 0);
 
     this.currentRoundPoints = allFlippedMultipliers.reduce((total, space) => total * space.type, 1);
     if(allFlippedSpaces.find((space) => space.type === SpaceTypeEnum.Voltorb)) {
-      this.state = GameState.RoundFailed;
+      this.state = GameState.RoundLost;
+      this.flippedMultipliers = this.board.flippedMultiplierSpaces().length;
       return true;
     } else if(allHigherMultipliers.filter((space) => space.state === SpaceStatusEnum.Flipped).length === allHigherMultipliers.length) {
       this.startIntermission();
@@ -47,32 +48,40 @@ class Game {
 
   public startRound(): Space[][] {
     this.board.buildSpaces(this.random);
+    this.state = GameState.Playing;
     return this.board.spaces;
   }
 
   public nextRound(): Space[][] {
-    if(this.state === GameState.RoundFailed) {
-      this.difficulty = 1;
-      this.board.difficulty = this.difficulty;
-      this.currentRoundPoints = 0;
+    if(this.state === GameState.RoundLost) {
+      this.handleLostRound();
     } else {
-      if(this.difficulty < 8) {
-        this.difficulty += 1;
-        this.board.difficulty = this.difficulty;
-      }
+      this.handleWonRound();
     }
-    this.state = GameState.Playing;
     return this.startRound();
+  }
+
+  public handleLostRound(): void {
+    if(this.flippedMultipliers === 0) {
+      this.board.difficulty = 1;
+    } else if(this.flippedMultipliers <= this.board.difficulty) {
+      this.board.difficulty = this.flippedMultipliers;
+    } 
+    this.currentRoundPoints = 0;
+  }
+
+  public handleWonRound(): void {
+    if(this.board.difficulty < 8) {
+      this.board.difficulty += 1;
+    }
   }
 
   public resetGame(): Space[][] {
     this.seed = this.randomSeed();
     this.random = seedrandom(this.seed);
-    this.difficulty = 1;
-    this.board.difficulty = this.difficulty;
+    this.board.difficulty = 1;
     this.currentRoundPoints = 0;
     this.totalPoints = 0;
-    this.state = GameState.Playing;
     return this.startRound();
   }
 

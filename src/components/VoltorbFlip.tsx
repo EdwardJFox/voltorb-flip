@@ -66,7 +66,7 @@ const VoltorbFlip = () => {
           setHighScore(game.totalPoints);
         }
         setTimeout(() => {
-          game.board.spaces.reduce((spaces: Space[], row: Space[]) => [...spaces, ...row]).forEach((space: Space) => space.flip());
+          game.board.allSpaces().forEach((space: Space) => space.flip());
           setGame(Object.create(game));
         }, 500);
         
@@ -105,7 +105,7 @@ const VoltorbFlip = () => {
           <div className="sidebar">
             <div className="gameMenu">
               <div className="details">
-                <GameDifficulty difficulty={game.difficulty} />
+                <GameDifficulty difficulty={game.board.difficulty} />
                 <GameScore totalScore={game.totalPoints} currentRoundScore={game.currentRoundPoints} highScore={highScore} />
               </div>
               <div className="inputs">

@@ -40,8 +40,16 @@ class Board {
     return elements;
   }
 
-  public flipCard(row: number, column: number): Boolean {
-    return this.spaces[row][column].flip();
+  public allSpaces(): Space[] {
+    return this.spaces.reduce((spaces: Space[], row) => [...spaces, ...row])
+  }
+
+  public flippedSpaces(): Space[] {
+    return this.allSpaces().filter((space: Space) => space.isFlipped())
+  }
+
+  public flippedMultiplierSpaces(): Space[] {
+    return this.flippedSpaces().filter((space: Space) => space.isMultiplier())
   }
 
   private buildMultipliers(random: any): Space[] {
