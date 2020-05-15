@@ -48,7 +48,7 @@ class Space {
   }
 
   public isMultiplier(): boolean {
-    return this.type > SpaceMarkersEnum.Two;
+    return this.type >= SpaceMarkersEnum.Two;
   }
 }
 

@@ -18,16 +18,17 @@ class Game {
   state: GameState = GameState.Playing;
   flippedMultipliers: number = 0;
 
-  public setup() {
+  constructor() {
     // Ensure that random is maintained between each board as well, from the beginning of the game
     this.random = seedrandom(this.seed);
     this.board = new Board(1);
+    this.board.buildSpaces(this.random);
   }
 
   /**
    * Return true for a change in state
    */
-  public checkBoard(): Boolean {
+  public checkBoard(): GameState {
     const allSpaces = this.board.allSpaces();
     const allFlippedSpaces = allSpaces.filter((space) => space.state === SpaceStatusEnum.Flipped);
     const allHigherMultipliers = allSpaces.filter((space) => space.type > 1);
@@ -37,13 +38,11 @@ class Game {
     if(allFlippedSpaces.find((space) => space.type === SpaceTypeEnum.Voltorb)) {
       this.state = GameState.RoundLost;
       this.flippedMultipliers = this.board.flippedMultiplierSpaces().length;
-      return true;
     } else if(allHigherMultipliers.filter((space) => space.state === SpaceStatusEnum.Flipped).length === allHigherMultipliers.length) {
       this.startIntermission();
-      return true;
     }
 
-    return false;
+    return this.state;
   }
 
   public startRound(): Space[][] {

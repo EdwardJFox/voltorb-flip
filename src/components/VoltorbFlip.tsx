@@ -36,14 +36,6 @@ const VoltorbFlip = () => {
   const [inputMode, setInputMode] = useState(InputModeEnum.Flipping);
   const [highScore, setHighScore] = useState(getHighScoreStorage());
 
-  useEffect(() => {
-    // setSeed(game.seed);
-    game.setup();
-    game.board.buildSpaces(game.random);
-    setGame(Object.create(game));
-  // eslint-disable-next-line
-  }, []);
-
   const handleSpaceClick = (space: Space) => {
     if(inputMode === InputModeEnum.Flipping) {
       handleCardFlip(space);

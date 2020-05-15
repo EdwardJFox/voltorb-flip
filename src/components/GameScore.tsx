@@ -16,7 +16,7 @@ const GameScore = ({ totalScore, currentRoundScore, highScore }: GameScoreInterf
     <div className="gameScore">
       <div className="gameScoreBorder current">
         <div className="gameScoreInner">
-          <div className="name">Current round</div>
+          <div className="name">Round points</div>
           <div className="score">
             <AnimatedNumber value={currentRoundScore} formatValue={formatScore} />
           </div>
