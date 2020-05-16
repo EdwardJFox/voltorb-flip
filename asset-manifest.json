@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/voltorb-flip/static/css/main.fa78c5dc.chunk.css",
-    "main.js": "/voltorb-flip/static/js/main.55462f65.chunk.js",
-    "main.js.map": "/voltorb-flip/static/js/main.55462f65.chunk.js.map",
+    "main.js": "/voltorb-flip/static/js/main.62e9b312.chunk.js",
+    "main.js.map": "/voltorb-flip/static/js/main.62e9b312.chunk.js.map",
     "runtime-main.js": "/voltorb-flip/static/js/runtime-main.2d2e4099.js",
     "runtime-main.js.map": "/voltorb-flip/static/js/runtime-main.2d2e4099.js.map",
     "static/js/2.737d5afc.chunk.js": "/voltorb-flip/static/js/2.737d5afc.chunk.js",
     "static/js/2.737d5afc.chunk.js.map": "/voltorb-flip/static/js/2.737d5afc.chunk.js.map",
     "index.html": "/voltorb-flip/index.html",
-    "precache-manifest.0aef76d2e13f73317c932101e0a9f66d.js": "/voltorb-flip/precache-manifest.0aef76d2e13f73317c932101e0a9f66d.js",
+    "precache-manifest.4ed4429f6fb88d817b37dc78c519ac49.js": "/voltorb-flip/precache-manifest.4ed4429f6fb88d817b37dc78c519ac49.js",
     "service-worker.js": "/voltorb-flip/service-worker.js",
     "static/css/main.fa78c5dc.chunk.css.map": "/voltorb-flip/static/css/main.fa78c5dc.chunk.css.map",
     "static/js/2.737d5afc.chunk.js.LICENSE.txt": "/voltorb-flip/static/js/2.737d5afc.chunk.js.LICENSE.txt",
@@ -20,6 +20,6 @@
     "static/js/runtime-main.2d2e4099.js",
     "static/js/2.737d5afc.chunk.js",
     "static/css/main.fa78c5dc.chunk.css",
-    "static/js/main.55462f65.chunk.js"
+    "static/js/main.62e9b312.chunk.js"
   ]
 }
