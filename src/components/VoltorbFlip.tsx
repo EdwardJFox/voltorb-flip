@@ -52,7 +52,9 @@ const VoltorbFlip = () => {
   const handleCardFlip = (space: Space) => {
     if(space.state === SpaceStatusEnum.Hidden && game.state === GameState.Playing) {
       space.flip();
-      if(game.checkBoard()) {
+      game.updateBoardState();
+      console.log(game.state);
+      if(game.state !== GameState.Playing) {
         if(game.totalPoints > highScore) {
           setHighScoreInStorage(game.totalPoints);
           setHighScore(game.totalPoints);
@@ -72,6 +74,7 @@ const VoltorbFlip = () => {
 
   const handleRestartClick = () => {
     game.resetGame();
+    game.startRound();
     setGame(Object.create(game));  
     setShowOverlay(false);
   }

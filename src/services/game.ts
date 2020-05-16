@@ -1,7 +1,6 @@
 import seedrandom from 'seedrandom';
 
-import Board from "./board";
-import Space, { SpaceStatusEnum, SpaceTypeEnum } from './space';
+import Board, { BoardStatusEnum } from "./board";
 
 export enum GameState {
   Playing,
@@ -16,55 +15,57 @@ class Game {
   currentRoundPoints: number = 0;
   totalPoints: number = 0;
   state: GameState = GameState.Playing;
-  flippedMultipliers: number = 0;
+  flippedMultipliersCount: number = 0;
 
   constructor() {
-    // Ensure that random is maintained between each board as well, from the beginning of the game
+    // Ensure that random is maintained between each board
     this.random = seedrandom(this.seed);
     this.board = new Board(1);
     this.board.buildSpaces(this.random);
   }
 
   /**
-   * Return true for a change in state
+   * Method to reliably calculate the current state of the board.
+   * It currently changes game state as well.
    */
-  public checkBoard(): GameState {
-    const allSpaces = this.board.allSpaces();
-    const allFlippedSpaces = allSpaces.filter((space) => space.state === SpaceStatusEnum.Flipped);
-    const allHigherMultipliers = allSpaces.filter((space) => space.type > 1);
-    const allFlippedMultipliers = allFlippedSpaces.filter((space) => space.type > 0);
+  public updateBoardState(): GameState {
+    this.currentRoundPoints = this.board.getCurrentRoundPoints();
+    this.flippedMultipliersCount = this.board.flippedMultiplierSpaces().length;
 
-    this.currentRoundPoints = allFlippedMultipliers.reduce((total, space) => total * space.type, 1);
-    if(allFlippedSpaces.find((space) => space.type === SpaceTypeEnum.Voltorb)) {
-      this.state = GameState.RoundLost;
-      this.flippedMultipliers = this.board.flippedMultiplierSpaces().length;
-    } else if(allHigherMultipliers.filter((space) => space.state === SpaceStatusEnum.Flipped).length === allHigherMultipliers.length) {
-      this.startIntermission();
+    switch(this.board.checkBoard()) {
+      case BoardStatusEnum.Active:
+        this.state = GameState.Playing;
+        break;
+      case BoardStatusEnum.Complete:
+        this.state = GameState.Intermission;
+        break;
+      case BoardStatusEnum.Lost:
+        this.state = GameState.RoundLost;
+        break;
     }
 
     return this.state;
   }
 
-  public startRound(): Space[][] {
+  public startRound(): void {
     this.board.buildSpaces(this.random);
     this.state = GameState.Playing;
-    return this.board.spaces;
   }
 
-  public nextRound(): Space[][] {
+  public nextRound(): void {
     if(this.state === GameState.RoundLost) {
       this.handleLostRound();
     } else {
       this.handleWonRound();
     }
-    return this.startRound();
+    this.startRound();
   }
 
   public handleLostRound(): void {
-    if(this.flippedMultipliers === 0) {
+    if(this.flippedMultipliersCount === 0) {
       this.board.difficulty = 1;
-    } else if(this.flippedMultipliers <= this.board.difficulty) {
-      this.board.difficulty = this.flippedMultipliers;
+    } else if(this.flippedMultipliersCount <= this.board.difficulty) {
+      this.board.difficulty = this.flippedMultipliersCount;
     } 
     this.currentRoundPoints = 0;
   }
@@ -75,16 +76,15 @@ class Game {
     }
   }
 
-  public resetGame(): Space[][] {
+  public resetGame(): void {
     this.seed = this.randomSeed();
     this.random = seedrandom(this.seed);
     this.board.difficulty = 1;
     this.currentRoundPoints = 0;
     this.totalPoints = 0;
-    return this.startRound();
   }
 
-  public startIntermission() {
+  public startIntermission(): void {
     this.state = GameState.Intermission;
     this.totalPoints += this.currentRoundPoints;
     this.currentRoundPoints = 0;

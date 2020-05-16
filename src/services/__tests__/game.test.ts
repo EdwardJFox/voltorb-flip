@@ -2,26 +2,106 @@ import seedrandom from 'seedrandom';
 
 import Game, { GameState } from '../game';
 import Space, { SpaceTypeEnum } from '../space';
+import { BoardStatusEnum } from '../board';
 
 describe('Game class', () => {
-  describe('#checkBoard', () => {
+  describe('#updateBoardState', () => {
     let game = new Game();
     
     beforeEach(() => {
       game = new Game();
-      game.board.buildSpaces(seedrandom('test'));
+      jest.spyOn(game.board, 'getCurrentRoundPoints').mockReturnValue(2);
+      jest.spyOn(game.board, 'flippedMultiplierSpaces').mockReturnValue([new Space(3), new Space(2), new Space(3)]);
     });
 
-    describe('with a voltorb space flipped', () => {
+    it('sets the current round points', () => {
+      expect(game.currentRoundPoints).toStrictEqual(0);
+      game.updateBoardState();
+      expect(game.currentRoundPoints).toStrictEqual(2);
+    });
+
+    it('sets the number of cards which have been flipped and are multipliers so far', () => {
+      expect(game.flippedMultipliersCount).toStrictEqual(0);
+      game.updateBoardState();
+      expect(game.flippedMultipliersCount).toStrictEqual(3);
+    });
+
+    describe('with the board having a status of active', () => {
       beforeEach(() => {
-        game.board.spaces[0][2].flip();
+        jest.spyOn(game.board, 'checkBoard').mockReturnValue(BoardStatusEnum.Active);
+        game.updateBoardState();
       });
 
-      it('returns the Lost state to highlight the board is lost', () => {
-        expect(game.checkBoard()).toEqual(GameState.RoundLost);
+      it('keeps the game state the same to show that the round is still being played', () => {
+        expect(game.state).toEqual(GameState.Playing);
       });
     });
 
+    describe('with the board having a status of complete', () => {
+      beforeEach(() => {
+        jest.spyOn(game.board, 'checkBoard').mockReturnValue(BoardStatusEnum.Complete);
+        game.updateBoardState();
+      });
+
+      it('changes the game state to show that the round is complete and moved to an intermission', () => {
+        expect(game.state).toEqual(GameState.Intermission);
+      });
+    });
+
+    describe('with the board having a status of lost', () => {
+      beforeEach(() => {
+        jest.spyOn(game.board, 'checkBoard').mockReturnValue(BoardStatusEnum.Lost);
+        game.updateBoardState();
+      });
+
+      it('changes the game state to show that the round is lost', () => {
+        expect(game.state).toEqual(GameState.RoundLost);
+      });
+    });
+  });
+
+  describe('#startRound', () => {
+    let game = new Game();
+    game.state = GameState.Intermission;
+
+    it('sets the board up and sets up the games internal state', () => {
+      jest.spyOn(game.board, 'buildSpaces');
+      game.startRound();
+      expect(game.board.buildSpaces).toBeCalled();
+      expect(game.state).toEqual(GameState.Playing);
+    });
+  });
+
+  describe('#nextRound', () => {
+    let game = new Game();
+
+    describe('with the games state being "lost"', () => {
+      beforeEach(() => {
+        game.state = GameState.RoundLost;
+      });
+
+      it('handles the loss, and begins the next round', () => {
+        jest.spyOn(game, 'handleLostRound');
+        jest.spyOn(game, 'startRound');
+        game.nextRound();
+        expect(game.handleLostRound).toBeCalled();
+        expect(game.startRound).toBeCalled();
+      });
+    });
+
+    describe('with the games state being in intermission', () => {
+      beforeEach(() => {
+        game.state = GameState.Intermission;
+      });
+
+      it('handles the loss, and begins the next round', () => {
+        jest.spyOn(game, 'handleWonRound');
+        jest.spyOn(game, 'startRound');
+        game.nextRound();
+        expect(game.handleWonRound).toBeCalled();
+        expect(game.startRound).toBeCalled();
+      });
+    });
   });
 
   describe('#handleLostRound', () => {
@@ -90,9 +170,65 @@ describe('Game class', () => {
       ${8}          | ${9}                | ${8}
     `("with the difficulty set to $difficulty, and $multipliersFlipped multipliers are flipped, it sets the difficulty to $expectedDifficulty", ({ difficulty, multipliersFlipped, expectedDifficulty }) => {
       game.board.difficulty = difficulty
-      game.flippedMultipliers = multipliersFlipped;
+      game.flippedMultipliersCount = multipliersFlipped;
       game.handleLostRound();
       expect(game.board.difficulty).toBe(expectedDifficulty);
+    });
+  });
+
+  describe('#handleWonRound', () => {
+    let game = new Game();
+
+    describe('and the difficulty is less than 8', () => {
+      it('increments the difficulty by 1', () => {
+        game.board.difficulty = 5;
+        game.handleWonRound();
+        expect(game.board.difficulty).toEqual(6);
+      });
+    });
+
+    describe('and the difficulty of the board is currently at 8', () => {
+      it('keeps the difficulty the same', () => {
+        game.board.difficulty = 8;
+        game.handleWonRound();
+        expect(game.board.difficulty).toEqual(8);
+      });
+    });
+  });
+
+  describe('#resetGame', () => {
+    let game = new Game();
+
+    it('resets the game back to its original state, and starts the next round', () => {
+      const originalSeed = game.seed;
+      const originalRandom = game.random;
+      game.board.difficulty = 5;
+      game.currentRoundPoints = 120;
+      game.totalPoints = 360;
+
+      game.resetGame();
+
+      expect(game.seed).not.toEqual(originalSeed);
+      expect(game.random).not.toEqual(originalRandom);
+      expect(game.board.difficulty).toEqual(1);
+      expect(game.currentRoundPoints).toEqual(0);
+      expect(game.totalPoints).toEqual(0);
+    });
+  });
+
+  describe('#startIntermission', () => {
+    let game = new Game();
+
+    it('resets the game back to its original state, and starts the next round', () => {
+      game.state = GameState.Playing;
+      game.currentRoundPoints = 120;
+      game.totalPoints = 360;
+
+      game.startIntermission();
+
+      expect(game.state).toEqual(GameState.Intermission);
+      expect(game.currentRoundPoints).toEqual(0);
+      expect(game.totalPoints).toEqual(480);
     });
   });
 });

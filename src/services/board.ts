@@ -1,6 +1,12 @@
 import * as ShuffleSeed from 'shuffle-seed';
 
-import Space, { SpaceTypeEnum } from './space';
+import Space, { SpaceTypeEnum, SpaceStatusEnum } from './space';
+
+export enum BoardStatusEnum {
+  Active,
+  Lost,
+  Complete
+}
 
 class Board {
   difficulty: number;
@@ -12,6 +18,8 @@ class Board {
     this.difficulty = difficulty;
     this.spaces = [];
   }
+
+  // Board builders
 
   public buildSpaces(random: any) {
     this.spaces = this.generateSpaces(random);
@@ -40,18 +48,6 @@ class Board {
     return elements;
   }
 
-  public allSpaces(): Space[] {
-    return this.spaces.reduce((spaces: Space[], row) => [...spaces, ...row])
-  }
-
-  public flippedSpaces(): Space[] {
-    return this.allSpaces().filter((space: Space) => space.isFlipped())
-  }
-
-  public flippedMultiplierSpaces(): Space[] {
-    return this.flippedSpaces().filter((space: Space) => space.isMultiplier())
-  }
-
   private buildMultipliers(random: any): Space[] {
     return Array(this.numberOfMultipliers()).fill(0).map(() => {
       if(random() < 0.6) {
@@ -69,6 +65,51 @@ class Board {
   private buildOneSpaces() {
     return Array(this.numberOfOneSpaces()).fill(0).map(() => new Space(SpaceTypeEnum.One));
   }
+
+  // Mutator accessors
+
+  public allSpaces(): Space[] {
+    return this.spaces.reduce((spaces: Space[], row) => [...spaces, ...row])
+  }
+
+  public allMultiplierSpaces() {
+    return this.allSpaces().filter((space: Space) => space.isMultiplier());
+  }
+
+  public flippedSpaces(): Space[] {
+    return this.allSpaces().filter((space: Space) => space.isFlipped())
+  }
+
+  public flippedMultiplierSpaces(): Space[] {
+    return this.flippedSpaces().filter((space: Space) => space.isMultiplier());
+  }
+
+  public getCurrentRoundPoints(): number {
+    return this.flippedMultiplierSpaces().reduce((total, space) => total * space.type, 1);
+  }
+
+  // Query methods
+
+  public checkBoard(): BoardStatusEnum {
+    if(this.isBoardLost()) {
+      return BoardStatusEnum.Lost;
+    } else if(this.isBoardComplete()) {
+      return BoardStatusEnum.Complete;
+    }
+
+    return BoardStatusEnum.Active;
+  }
+
+  public isBoardLost(): boolean {
+    return this.flippedSpaces().find((space) => space.type === SpaceTypeEnum.Voltorb) !== undefined;
+  }
+
+  public isBoardComplete(): boolean {
+    const flippedSpaces = this.flippedMultiplierSpaces();
+    return flippedSpaces.filter((space) => space.state === SpaceStatusEnum.Flipped).length === this.allMultiplierSpaces().length
+  }
+
+  // Internal calculations
   
   private numberOfMultipliers = () => this.difficulty + 2;
   private numberOfVoltorbs = () => this.difficulty >= 5 ? 10 : (this.difficulty + 5);
