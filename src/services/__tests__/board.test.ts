@@ -1,6 +1,6 @@
 import seedrandom from 'seedrandom';
 
-import Board from '../board';
+import Board, { BoardStatusEnum } from '../board';
 import Space, { SpaceTypeEnum, SpaceStatusEnum } from '../space';
 
 describe('Board class', () => {
@@ -200,20 +200,34 @@ describe('Board class', () => {
     });
 
     describe('if the board is lost', () => {
-      it('returns that the state of the board is lost', () => {
+      beforeEach(() => {
+        jest.spyOn(board, 'isBoardLost').mockReturnValue(true);
+      });
 
+      it('returns that the state of the board is lost', () => {
+        expect(board.checkBoard()).toEqual(BoardStatusEnum.Lost);
       });
     });
 
     describe('if the board is complete', () => {
-      it('returns that the state of the board is complete', () => {
+      beforeEach(() => {
+        jest.spyOn(board, 'isBoardLost').mockReturnValue(false);
+        jest.spyOn(board, 'isBoardComplete').mockReturnValue(true);
+      });
 
+      it('returns that the state of the board is complete', () => {
+        expect(board.checkBoard()).toEqual(BoardStatusEnum.Complete);
       });
     });
 
     describe('if the board is incomplete but not lost', () => {
-      it('returns that the state of the board is currently active', () => {
+      beforeEach(() => {
+        jest.spyOn(board, 'isBoardLost').mockReturnValue(false);
+        jest.spyOn(board, 'isBoardComplete').mockReturnValue(false);
+      });
 
+      it('returns that the state of the board is currently active', () => {
+        expect(board.checkBoard()).toEqual(BoardStatusEnum.Active);
       });
     });
   });
@@ -227,19 +241,52 @@ describe('Board class', () => {
     });
 
     describe('with a board with no cards flipping', () => {
+      beforeEach(() => {
+        jest.spyOn(board, 'flippedSpaces').mockReturnValue([]);
+      });
 
+      it('returns false', () => {
+        expect(board.isBoardLost()).toBeFalsy();
+      });
     });
 
     describe('with a board and some non-voltorb cards flipped', () => {
+      beforeEach(() => {
+        jest.spyOn(board, 'flippedSpaces').mockReturnValue([
+          new Space(1), new Space(2), new Space(3)
+        ]);
+      });
 
+      it('returns false', () => {
+        expect(board.isBoardLost()).toBeFalsy();
+      });
     });
 
     describe('with a board with all the multiplier cards flipped', () => {
+      beforeEach(() => {
+        jest.spyOn(board, 'flippedSpaces').mockReturnValue([
+          new Space(1), new Space(2), new Space(3), new Space(2)
+        ]);
+        jest.spyOn(board, 'allMultiplierSpaces').mockReturnValue([
+          new Space(2), new Space(3), new Space(2)
+        ]);
+      });
 
+      it('returns false', () => {
+        expect(board.isBoardLost()).toBeFalsy();
+      });
     });
 
     describe('with a board which has had a voltorb card flipped', () => {
+      beforeEach(() => {
+        jest.spyOn(board, 'flippedSpaces').mockReturnValue([
+          new Space(1), new Space(2), new Space(3),new Space(0)
+        ]);
+      });
 
+      it('returns true', () => {
+        expect(board.isBoardLost()).toBeTruthy();
+      });
     });
   });
 
@@ -249,22 +296,64 @@ describe('Board class', () => {
     beforeEach(() => {
       board = new Board(1);
       board.buildSpaces(random);
+
+      jest.spyOn(board, 'allMultiplierSpaces').mockReturnValue([
+        new Space(2), new Space(3), new Space(2)
+      ]);
     });
 
     describe('with a board with no cards flipping', () => {
+      beforeEach(() => {
+        jest.spyOn(board, 'flippedMultiplierSpaces').mockReturnValue([]);
+      });
 
+      it('returns false', () => {
+        expect(board.isBoardComplete()).toBeFalsy();
+      });
     });
 
     describe('with a board and some non-voltorb cards flipped', () => {
+      beforeEach(() => {
+        const flippedSpace1 = new Space(2);
+        flippedSpace1.flip();
+        const flippedSpace2 = new Space(3);
+        flippedSpace2.flip();
+        jest.spyOn(board, 'flippedMultiplierSpaces').mockReturnValue([
+          flippedSpace1, flippedSpace2
+        ]);
+      });
 
+      it('returns false', () => {
+        expect(board.isBoardComplete()).toBeFalsy();
+      });
     });
 
     describe('with a board with all the multiplier cards flipped', () => {
+      beforeEach(() => {
+        const flippedSpace1 = new Space(2);
+        flippedSpace1.flip();
+        const flippedSpace2 = new Space(3);
+        flippedSpace2.flip();
+        const flippedSpace3 = new Space(2);
+        flippedSpace3.flip();
+        jest.spyOn(board, 'flippedMultiplierSpaces').mockReturnValue([
+          flippedSpace1, flippedSpace2, flippedSpace3
+        ]);
+      });
 
+      it('returns true', () => {
+        expect(board.isBoardComplete()).toBeTruthy();
+      });
     });
 
     describe('with a board which has had a voltorb card flipped', () => {
+      beforeEach(() => {
+        jest.spyOn(board, 'flippedMultiplierSpaces').mockReturnValue([]);
+      });
 
+      it('returns false', () => {
+        expect(board.isBoardComplete()).toBeFalsy();
+      });
     });
   });
 
