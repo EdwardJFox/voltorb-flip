@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/voltorb-flip/static/css/main.fa78c5dc.chunk.css",
-    "main.js": "/voltorb-flip/static/js/main.62e9b312.chunk.js",
-    "main.js.map": "/voltorb-flip/static/js/main.62e9b312.chunk.js.map",
+    "main.js": "/voltorb-flip/static/js/main.7209e122.chunk.js",
+    "main.js.map": "/voltorb-flip/static/js/main.7209e122.chunk.js.map",
     "runtime-main.js": "/voltorb-flip/static/js/runtime-main.2d2e4099.js",
     "runtime-main.js.map": "/voltorb-flip/static/js/runtime-main.2d2e4099.js.map",
-    "static/js/2.737d5afc.chunk.js": "/voltorb-flip/static/js/2.737d5afc.chunk.js",
-    "static/js/2.737d5afc.chunk.js.map": "/voltorb-flip/static/js/2.737d5afc.chunk.js.map",
+    "static/js/2.7b136161.chunk.js": "/voltorb-flip/static/js/2.7b136161.chunk.js",
+    "static/js/2.7b136161.chunk.js.map": "/voltorb-flip/static/js/2.7b136161.chunk.js.map",
     "index.html": "/voltorb-flip/index.html",
-    "precache-manifest.4ed4429f6fb88d817b37dc78c519ac49.js": "/voltorb-flip/precache-manifest.4ed4429f6fb88d817b37dc78c519ac49.js",
+    "precache-manifest.5d8a56c8d5083eda147fd12bac1023bd.js": "/voltorb-flip/precache-manifest.5d8a56c8d5083eda147fd12bac1023bd.js",
     "service-worker.js": "/voltorb-flip/service-worker.js",
     "static/css/main.fa78c5dc.chunk.css.map": "/voltorb-flip/static/css/main.fa78c5dc.chunk.css.map",
-    "static/js/2.737d5afc.chunk.js.LICENSE.txt": "/voltorb-flip/static/js/2.737d5afc.chunk.js.LICENSE.txt",
+    "static/js/2.7b136161.chunk.js.LICENSE.txt": "/voltorb-flip/static/js/2.7b136161.chunk.js.LICENSE.txt",
     "static/media/BoardSpace.scss": "/voltorb-flip/static/media/card_bg.bf15fab0.svg",
     "static/media/GameStateOverlay.scss": "/voltorb-flip/static/media/voltorb.636f6788.svg",
     "static/media/voltorb_marker.svg": "/voltorb-flip/static/media/voltorb_marker.99f58e1e.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.2d2e4099.js",
-    "static/js/2.737d5afc.chunk.js",
+    "static/js/2.7b136161.chunk.js",
     "static/css/main.fa78c5dc.chunk.css",
-    "static/js/main.62e9b312.chunk.js"
+    "static/js/main.7209e122.chunk.js"
   ]
 }
