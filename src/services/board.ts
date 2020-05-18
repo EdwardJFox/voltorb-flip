@@ -69,10 +69,10 @@ class Board {
   // Mutator accessors
 
   public allSpaces(): Space[] {
-    return this.spaces.reduce((spaces: Space[], row) => [...spaces, ...row])
+    return this.spaces.flat();
   }
 
-  public allMultiplierSpaces() {
+  public allMultiplierSpaces(): Space[] {
     return this.allSpaces().filter((space: Space) => space.isMultiplier());
   }
 
