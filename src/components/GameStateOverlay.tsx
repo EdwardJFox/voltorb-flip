@@ -1,5 +1,5 @@
 import React from 'react';
-import { GameState } from '../services/game';
+import { GameStateEnum } from '../services/game';
 import Button from './Button';
 
 import './GameStateOverlay.scss';
@@ -27,7 +27,7 @@ const GameRoundLostOverlay = ({ handleNextRoundClick, handleRestartClick }: any)
   </React.Fragment>
 
 interface GameStateOverlayInterface {
-  gameState: GameState;
+  gameState: GameStateEnum;
   showOverlay: boolean;
   handleNextRoundClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
   handleRestartClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
@@ -35,10 +35,10 @@ interface GameStateOverlayInterface {
 
 const GameStateOverlay = ({ showOverlay, gameState, handleNextRoundClick, handleRestartClick }: GameStateOverlayInterface) => {
   switch(gameState){
-    case GameState.Intermission: {
+    case GameStateEnum.Intermission: {
       return <Overlay show={showOverlay}><GameIntermissionOverlay handleNextRoundClick={handleNextRoundClick} /></Overlay>
     }
-    case GameState.RoundLost: {
+    case GameStateEnum.RoundLost: {
       return <Overlay show={showOverlay} className="intermission"><GameRoundLostOverlay handleNextRoundClick={handleNextRoundClick} handleRestartClick={handleRestartClick} /></Overlay>
     }
     default: {

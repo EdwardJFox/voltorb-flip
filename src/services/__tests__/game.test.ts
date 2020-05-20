@@ -1,6 +1,6 @@
 import seedrandom from 'seedrandom';
 
-import Game, { GameState } from '../game';
+import Game, { GameStateEnum } from '../game';
 import Space, { SpaceTypeEnum } from '../space';
 import { BoardStatusEnum } from '../board';
 
@@ -33,7 +33,7 @@ describe('Game class', () => {
       });
 
       it('keeps the game state the same to show that the round is still being played', () => {
-        expect(game.state).toEqual(GameState.Playing);
+        expect(game.state).toEqual(GameStateEnum.Playing);
       });
     });
 
@@ -44,7 +44,7 @@ describe('Game class', () => {
       });
 
       it('changes the game state to show that the round is complete and moved to an intermission', () => {
-        expect(game.state).toEqual(GameState.Intermission);
+        expect(game.state).toEqual(GameStateEnum.Intermission);
       });
     });
 
@@ -55,20 +55,20 @@ describe('Game class', () => {
       });
 
       it('changes the game state to show that the round is lost', () => {
-        expect(game.state).toEqual(GameState.RoundLost);
+        expect(game.state).toEqual(GameStateEnum.RoundLost);
       });
     });
   });
 
   describe('#startRound', () => {
     let game = new Game();
-    game.state = GameState.Intermission;
+    game.state = GameStateEnum.Intermission;
 
     it('sets the board up and sets up the games internal state', () => {
       jest.spyOn(game.board, 'buildSpaces');
       game.startRound();
       expect(game.board.buildSpaces).toBeCalled();
-      expect(game.state).toEqual(GameState.Playing);
+      expect(game.state).toEqual(GameStateEnum.Playing);
     });
   });
 
@@ -77,7 +77,7 @@ describe('Game class', () => {
 
     describe('with the games state being "lost"', () => {
       beforeEach(() => {
-        game.state = GameState.RoundLost;
+        game.state = GameStateEnum.RoundLost;
       });
 
       it('handles the loss, and begins the next round', () => {
@@ -91,7 +91,7 @@ describe('Game class', () => {
 
     describe('with the games state being in intermission', () => {
       beforeEach(() => {
-        game.state = GameState.Intermission;
+        game.state = GameStateEnum.Intermission;
       });
 
       it('handles the loss, and begins the next round', () => {
@@ -220,13 +220,13 @@ describe('Game class', () => {
     let game = new Game();
 
     it('resets the game back to its original state, and starts the next round', () => {
-      game.state = GameState.Playing;
+      game.state = GameStateEnum.Playing;
       game.currentRoundPoints = 120;
       game.totalPoints = 360;
 
       game.startIntermission();
 
-      expect(game.state).toEqual(GameState.Intermission);
+      expect(game.state).toEqual(GameStateEnum.Intermission);
       expect(game.currentRoundPoints).toEqual(0);
       expect(game.totalPoints).toEqual(480);
     });

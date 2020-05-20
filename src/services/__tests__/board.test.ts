@@ -1,7 +1,7 @@
 import seedrandom from 'seedrandom';
 
 import Board, { BoardStatusEnum } from '../board';
-import Space, { SpaceTypeEnum, SpaceStatusEnum } from '../space';
+import Space, { SpaceTypeEnum } from '../space';
 
 describe('Board class', () => {
   let random: any;

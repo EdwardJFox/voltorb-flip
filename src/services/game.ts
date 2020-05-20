@@ -2,7 +2,7 @@ import seedrandom from 'seedrandom';
 
 import Board, { BoardStatusEnum } from "./board";
 
-export enum GameState {
+export enum GameStateEnum {
   Playing,
   RoundLost,
   Intermission
@@ -14,7 +14,7 @@ class Game {
   random: any;
   currentRoundPoints: number = 0;
   totalPoints: number = 0;
-  state: GameState = GameState.Playing;
+  state: GameStateEnum = GameStateEnum.Playing;
   flippedMultipliersCount: number = 0;
 
   constructor() {
@@ -28,19 +28,19 @@ class Game {
    * Method to reliably calculate the current state of the board.
    * It currently changes game state as well.
    */
-  public updateBoardState(): GameState {
+  public updateBoardState(): GameStateEnum {
     this.currentRoundPoints = this.board.getCurrentRoundPoints();
     this.flippedMultipliersCount = this.board.flippedMultiplierSpaces().length;
 
     switch(this.board.checkBoard()) {
       case BoardStatusEnum.Active:
-        this.state = GameState.Playing;
+        this.state = GameStateEnum.Playing;
         break;
       case BoardStatusEnum.Complete:
-        this.state = GameState.Intermission;
+        this.state = GameStateEnum.Intermission;
         break;
       case BoardStatusEnum.Lost:
-        this.state = GameState.RoundLost;
+        this.state = GameStateEnum.RoundLost;
         break;
     }
 
@@ -49,11 +49,11 @@ class Game {
 
   public startRound(): void {
     this.board.buildSpaces(this.random);
-    this.state = GameState.Playing;
+    this.state = GameStateEnum.Playing;
   }
 
   public nextRound(): void {
-    if(this.state === GameState.RoundLost) {
+    if(this.state === GameStateEnum.RoundLost) {
       this.handleLostRound();
     } else {
       this.handleWonRound();
@@ -85,7 +85,7 @@ class Game {
   }
 
   public startIntermission(): void {
-    this.state = GameState.Intermission;
+    this.state = GameStateEnum.Intermission;
     this.totalPoints += this.currentRoundPoints;
     this.currentRoundPoints = 0;
   }

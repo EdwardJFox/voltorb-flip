@@ -1,5 +1,5 @@
 import React from 'react';
-import Space, { SpaceStatusEnum, SpaceTypeEnum, SpaceMarkersEnum } from '../services/space';
+import Space, { SpaceStateEnum, SpaceTypeEnum, SpaceMarkersEnum } from '../services/space';
 
 import VoltorbMarker from '../images/voltorb_marker.svg';
 import Voltorb from '../images/voltorb.svg';
@@ -12,7 +12,7 @@ interface SpaceInterface {
 }
 
 const BoardSpace = ({ space, handleSpaceClick }: SpaceInterface) =>
-  <div className={`space boardSpace ${space.state === SpaceStatusEnum.Hidden ? 'hidden' : 'flipped' }`}>
+  <div className={`space boardSpace ${space.state === SpaceStateEnum.Hidden ? 'hidden' : 'flipped' }`}>
     <div className="spaceBorder">
       <div className="spaceInner">
         <div className="spaceFront" onClick={(e) => handleSpaceClick(space)}>
@@ -21,7 +21,7 @@ const BoardSpace = ({ space, handleSpaceClick }: SpaceInterface) =>
           </div>
         </div>
         <div className="spaceBack">
-          { space.state === SpaceStatusEnum.Flipped &&
+          { space.state === SpaceStateEnum.Flipped &&
             BoardSpaceBackContent(space)
           }
         </div>

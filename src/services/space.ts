@@ -5,7 +5,7 @@ export enum SpaceTypeEnum {
   Three
 }
 
-export enum SpaceStatusEnum {
+export enum SpaceStateEnum {
   Hidden,
   Flipped
 }
@@ -19,20 +19,15 @@ export enum SpaceMarkersEnum {
 
 class Space {
   type: SpaceTypeEnum;
-  state = SpaceStatusEnum.Hidden;
+  state = SpaceStateEnum.Hidden;
   markers: SpaceMarkersEnum[] = [];
 
   constructor(type: SpaceTypeEnum) {
     this.type = type;
   }
 
-  public flip(): Boolean {
-    this.state = SpaceStatusEnum.Flipped;
-    if(this.type === SpaceTypeEnum.Voltorb) {
-      return false;
-    } else {
-      return true;
-    }
+  public flip(): void {
+    this.state = SpaceStateEnum.Flipped;
   }
 
   public mark(marking: SpaceMarkersEnum): void {
@@ -44,7 +39,7 @@ class Space {
   }
 
   public isFlipped(): boolean {
-    return this.state === SpaceStatusEnum.Flipped;
+    return this.state === SpaceStateEnum.Flipped;
   }
 
   public isMultiplier(): boolean {

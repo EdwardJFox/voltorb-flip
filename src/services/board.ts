@@ -1,6 +1,6 @@
 import * as ShuffleSeed from 'shuffle-seed';
 
-import Space, { SpaceTypeEnum, SpaceStatusEnum } from './space';
+import Space, { SpaceTypeEnum, SpaceStateEnum } from './space';
 
 export enum BoardStatusEnum {
   Active,
@@ -106,7 +106,7 @@ class Board {
 
   public isBoardComplete(): boolean {
     const flippedSpaces = this.flippedMultiplierSpaces();
-    return flippedSpaces.filter((space) => space.state === SpaceStatusEnum.Flipped).length === this.allMultiplierSpaces().length
+    return flippedSpaces.filter((space) => space.state === SpaceStateEnum.Flipped).length === this.allMultiplierSpaces().length
   }
 
   // Internal calculations

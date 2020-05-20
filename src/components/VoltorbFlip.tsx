@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
 import GameBoard from './GameBoard';
-import Game, { GameState } from '../services/game';
+import Game, { GameStateEnum } from '../services/game';
 import GameScore from './GameScore';
-import Space, { SpaceStatusEnum } from '../services/space';
+import Space, { SpaceStateEnum } from '../services/space';
 import GameDifficulty from './GameDifficulty';
 import GameStateOverlay from './GameStateOverlay';
 import GameInputMode from './GameInputMode';
@@ -50,11 +50,11 @@ const VoltorbFlip = () => {
   }
 
   const handleCardFlip = (space: Space) => {
-    if(space.state === SpaceStatusEnum.Hidden && game.state === GameState.Playing) {
+    if(space.state === SpaceStateEnum.Hidden && game.state === GameStateEnum.Playing) {
       space.flip();
       game.updateBoardState();
       console.log(game.state);
-      if(game.state !== GameState.Playing) {
+      if(game.state !== GameStateEnum.Playing) {
         if(game.totalPoints > highScore) {
           setHighScoreInStorage(game.totalPoints);
           setHighScore(game.totalPoints);
