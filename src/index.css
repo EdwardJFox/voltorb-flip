@@ -16,8 +16,8 @@ html, body, #root {
 }
 
 #root {
-  background: #29a46a;
-  border: 8px solid #11935d;
+  background: var(--primary-bg);
+  border: 8px solid var(--primary-bg-border);
 }
 
 code {
@@ -27,7 +27,7 @@ code {
 
 footer {
   color: #fff;
-  position: absolute;
+  position: fixed;
   bottom: 10px;
   right: 10px;
   font-size: 14px;

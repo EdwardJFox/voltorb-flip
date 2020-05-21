@@ -2,13 +2,13 @@
   width: 100%;
   font-size: 9px;
   .gameScoreBorder {
-    border: 0.4em solid #a0c0b0;
+    border: 0.4em solid var(--info-bg-border);
     border-radius: 0.8em;
-    background-color: #a0c0b0;
+    background-color: var(--info-bg-border);
     .gameScoreInner {
       display: flex;
       padding: 0.4em 0.8em;
-      background: #fff;
+      background: var(--content-bg);
       border-radius: 0.4em;
       .name, .score {
         font-size: 1.6em;

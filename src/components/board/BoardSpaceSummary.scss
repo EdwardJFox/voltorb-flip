@@ -5,12 +5,12 @@
     .spacesSummaryMultiplierTotal, .spacesSummaryVoltorbTotal {
       font-size: 1.65em;
       font-weight: 700;
-      color: #333;
+      color: var(--text);
     }
     .spacesSummaryMultiplierTotal {
       flex: 0 0 40%;
       padding: 0 0.4em;
-      border-bottom: 0.4em solid #fff;
+      border-bottom: 0.4em solid var(--border);
       text-align: right;
     }
     .spacesSummaryVoltorbTotal {

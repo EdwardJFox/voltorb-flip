@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { InputModeEnum } from './VoltorbFlip';
-import VoltorbMarker from '../images/voltorb_marker.svg';
+import { InputModeEnum } from '../VoltorbFlip';
+
 import './GameInputMode.scss';
+import VoltorbMarker from '../../images/voltorb_marker.svg';
 
 interface GameInputModeInterface {
   currentInputMode: InputModeEnum;

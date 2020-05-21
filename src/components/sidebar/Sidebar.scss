@@ -1,0 +1,96 @@
+.sidebar {
+  padding: 0.2rem 0.6em 0;
+  .gameMenu {
+    display: flex;
+    font-size: 10px;
+  }
+  .controls {
+    display: none;
+  }
+}
+
+// Mobile devices and ipads in portrait
+@media screen and (orientation:portrait) and (max-width: 1023px) {
+  .sidebar {
+    .gameMenu {
+      flex-direction: column-reverse;
+      .inputs {
+        padding: 0.4rem 12%;
+      }
+    }
+    .controls {
+      display: none;
+    }
+  }
+}
+
+// Generic landscape device including mobile and tablet
+@media screen and (orientation:landscape) and (max-width: 1024px) {
+  .sidebar {
+    flex: 1;
+    .gameMenu {
+      flex-direction: column;
+    }
+    .controls {
+      display: none;
+    }
+  }
+}
+
+// Long thin mobile device specific queries
+@media screen and (orientation:landscape) and (min-width: 720px) and (max-width: 900px) {
+  .sidebar {
+    .gameMenu {
+      .inputs {
+        padding: 0.4rem 12%;
+      }
+    }
+  }
+}
+
+// iPad size and bigger in portrait
+@media screen and (min-width: 767px) and (orientation:portrait) {
+  .sidebar {
+    .gameMenu {
+      display: flex;
+      flex-direction: row;
+      font-size: initial;
+      .details {
+        flex: 5;
+      }
+      .inputs {
+        flex: 6;
+        margin-left: 0.8em;
+        padding: 0px;
+        .gameInputMode {
+          flex: 1;
+          font-size: initial;
+        }
+
+        .controls {
+          flex: 1;
+          margin-left: 0.8em;
+        }
+      }
+    }
+  }
+}
+// Desktop
+@media screen and (min-width: 1024px) {
+  .sidebar {
+    padding: 0.6em 0.4em;
+    flex: 0 0 20em;
+    .gameMenu {
+      display: block;
+      font-size: initial;
+      .inputs {
+        margin-left: 0;
+      }
+    }
+    .controls {
+      display: block;
+      padding-top: 0.8em;
+      text-align: right;
+    }
+  }
+}

@@ -1,5 +1,3 @@
-@import 'variables';
-
 .board {
   width: 100%;
 }
@@ -12,27 +10,27 @@
   .boardRow, .spacesSummary, .boardRow, .boardSpace {
     &:nth-child(1) {
       .boardSpace:before, .spaceSummaryInner, &:after {
-        background: $row_one;
+        background: var(--row-one-primary);
       }
     }
     &:nth-child(2) {
       .boardSpace:before, .spaceSummaryInner, &:after {
-        background: $row_two;
+        background: var(--row-two-primary);
       }
     }
     &:nth-child(3) {
       .boardSpace:before, .spaceSummaryInner, &:after {
-        background: $row_three;
+        background: var(--row-three-primary);
       }
     }
     &:nth-child(4) {
       .boardSpace:before, .spaceSummaryInner, &:after {
-        background: $row_four;
+        background: var(--row-four-primary);
       }
     }
     &:nth-child(5) {
       .boardSpace:before, .spaceSummaryInner, &:after {
-        background: $row_five;
+        background: var(--row-five-primary);
       }
     }
   }

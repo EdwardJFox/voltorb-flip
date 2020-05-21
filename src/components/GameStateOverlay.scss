@@ -20,11 +20,10 @@
   }
   .overlayInner {
     width: 80%;
-    padding: 0.8em;
-    border: 0.6em solid #29a46a;
+    padding: 1.2em;
     border-radius: 0.6em;
-    color: #333;
-    background-color: #fff;
+    color: var(--text);
+    background-color: var(--content-bg);
     box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.45);
 
     .btn {

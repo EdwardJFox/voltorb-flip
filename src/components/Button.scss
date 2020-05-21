@@ -6,25 +6,25 @@
   cursor: pointer;
 
   &.btn-primary {
-    background: #188060;
-    color: #fff;
+    background: var(--button-primary-bg);
+    color: var(--button-secondary-text);
     &:hover {
-      background: #1b6e55;
+      background: var(--button-primary-bg-hover);
     }
   }
   &.btn-secondary {
-    background: #3567e0;
-    color: #fff;
-    border: 0.2em solid #3f4040;
+    background: var(--button-secondary-bg);
+    color: var(--button-secondary-text);
+    border: 0.2em solid var(--button-secondary-border);
     &:hover {
-      background: #305ecc;
+      background: var(--button-secondary-bg-hover);
     }
   }
   &.btn-default {
-    background: #444;
-    color: #fff;
+    background: var(--button-default-bg);
+    color: var(--button-default-text);
     &:hover {
-      background: rgb(58, 58, 58);
+      background: var(--button-default-bg-hover);
     }
   }
 }

@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 
-import GameBoard from './GameBoard';
+import GameBoard from './board/GameBoard';
 import Game, { GameStateEnum } from '../services/game';
-import GameScore from './GameScore';
 import Space, { SpaceStateEnum } from '../services/space';
-import GameDifficulty from './GameDifficulty';
 import GameStateOverlay from './GameStateOverlay';
-import GameInputMode from './GameInputMode';
-import Button from './Button';
+import Sidebar from './sidebar/Sidebar';
 
 import './VoltorbFlip.scss';
 
@@ -95,23 +92,20 @@ const VoltorbFlip = () => {
         <React.Fragment>
           <div className="boardArea">
             <GameBoard board={game.board} handleSpaceClick={handleSpaceClick} />
-            <GameStateOverlay gameState={game.state} handleRestartClick={handleRestartClick} handleNextRoundClick={handleNextRoundClick} showOverlay={showOverlay} />
+            <GameStateOverlay
+              gameState={game.state}
+              handleRestartClick={handleRestartClick}
+              handleNextRoundClick={handleNextRoundClick}
+              showOverlay={showOverlay} />
           </div>
-          <div className="sidebar">
-            <div className="gameMenu">
-              <div className="details">
-                <GameDifficulty difficulty={game.board.difficulty} />
-                <GameScore totalScore={game.totalPoints} currentRoundScore={game.currentRoundPoints} highScore={highScore} />
-              </div>
-              <div className="inputs">
-                <GameInputMode handleInputModeChange={handleInputModeChange} currentInputMode={inputMode} />
-                <div className="controls">
-                  <Button handleOnClick={handleRestartClick} type="secondary">Start new game</Button>
-                </div>
-              </div>
-            </div>
-            <footer>Created by <a href="https://twitter.com/icemaz" target="_blank" rel="noopener noreferrer">@icemaz</a> - <a href="https://github.com/EdwardJFox/voltorb-flip" target="_blank" rel="noopener noreferrer">GitHub</a></footer>
-          </div>
+          <Sidebar
+            difficulty={game.board.difficulty}
+            totalPoints={game.totalPoints}
+            currentPoints={game.currentRoundPoints}
+            highScore={highScore}
+            handleInputModeChange={handleInputModeChange}
+            currentInputMode={inputMode}
+            handleRestartClick={handleRestartClick} />
         </React.Fragment>
       }
     </div>

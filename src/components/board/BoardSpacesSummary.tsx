@@ -1,7 +1,7 @@
 import React from 'react';
-import Space, { SpaceTypeEnum } from '../services/space';
+import Space, { SpaceTypeEnum } from '../../services/space';
 
-import Voltorb from '../images/voltorb.svg';
+import Voltorb from '../../images/voltorb.svg';
 import './BoardSpaceSummary.scss';
 
 interface BoardSpacesSummaryInterface {

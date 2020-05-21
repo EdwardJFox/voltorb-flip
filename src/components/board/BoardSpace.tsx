@@ -1,8 +1,8 @@
 import React from 'react';
-import Space, { SpaceStateEnum, SpaceTypeEnum, SpaceMarkersEnum } from '../services/space';
+import Space, { SpaceStateEnum, SpaceTypeEnum, SpaceMarkersEnum } from '../../services/space';
 
-import VoltorbMarker from '../images/voltorb_marker.svg';
-import Voltorb from '../images/voltorb.svg';
+import VoltorbMarker from '../../images/voltorb_marker.svg';
+import Voltorb from '../../images/voltorb.svg';
 
 import './BoardSpace.scss';
 

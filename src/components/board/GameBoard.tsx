@@ -1,6 +1,6 @@
 import React from 'react';
-import Board from '../services/board';
-import Space from '../services/space';
+import Board from '../../services/board';
+import Space from '../../services/space';
 import BoardRow from './BoardRow';
 import BoardSpacesSummary from './BoardSpacesSummary';
 

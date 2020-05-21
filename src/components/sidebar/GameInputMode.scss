@@ -1,8 +1,8 @@
 .gameInputMode {
   display: flex;
   padding: 0.4em;
-  background: #cd704a;
-  border: 0.2em solid #f09b7f;
+  background: var(--secondary-bg);
+  border: 0.2em solid var(--secondary-bg-border);
   border-radius: 0.6em;
   .markers {
     flex: 1;
@@ -37,17 +37,17 @@
     align-items: center;
     justify-content: center;
     padding: 0.6em;
-    border: 0.2em solid #2b453d;
+    border: 0.2em solid var(--primary-bg-darker-border);
     border-radius: 0.4em;
-    background: #0a835e;
-    color: #ffda35;
+    background: var(--primary-bg-darker);
+    color: var(--highlight-color);
     cursor: pointer;
 
     &:hover {
-      background: #097957;
+      background: var(--primary-bg-darker-hover);
     }
     &.selected {
-      border-color: #ffda35;
+      border-color: var(--border-selected);
     }
   }
 }

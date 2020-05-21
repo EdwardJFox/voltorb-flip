@@ -1,5 +1,5 @@
 import React from 'react';
-import Space from '../services/space';
+import Space from '../../services/space';
 import BoardSpace from './BoardSpace';
 import BoardSpacesSummary from './BoardSpacesSummary';
 

@@ -1,14 +1,6 @@
+@import './variables';
+
 .voltorbFlip {
-  .sidebar {
-    padding: 0.2rem 0.6em 0;
-    .gameMenu {
-      display: flex;
-      font-size: 10px;
-    }
-    .controls {
-      display: none;
-    }
-  }
   .boardArea {
     position: relative;
   }
@@ -19,17 +11,6 @@
   .voltorbFlip {
     .boardArea {
       font-size: 2vw;
-    }
-    .sidebar {
-      .gameMenu {
-        flex-direction: column-reverse;
-        .inputs {
-          padding: 0.4rem 12%;
-        }
-      }
-      .controls {
-        display: none;
-      }
     }
   }
 }
@@ -42,15 +23,6 @@
       font-size: 2vh;
       flex: 1;
     }
-    .sidebar {
-      flex: 1;
-      .gameMenu {
-        flex-direction: column;
-      }
-      .controls {
-        display: none;
-      }
-    }
   }
 }
 
@@ -60,49 +32,11 @@
     .boardArea {
       margin: 0 6em;
     }
-    .sidebar {
-      .gameMenu {
-        .inputs {
-          padding: 0.4rem 12%;
-        }
-      }
-    }
-  }
-}
-
-// iPad size and bigger in portrait
-@media screen and (min-width: 767px) and (orientation:portrait){
-  .voltorbFlip {
-    .sidebar {
-      .gameMenu {
-        display: flex;
-        flex-direction: row;
-        font-size: initial;
-        .details {
-          flex: 5;
-        }
-        .inputs {
-          flex: 6;
-          margin-left: 0.8em;
-          padding: 0px;
-          .gameInputMode {
-            flex: 1;
-            font-size: initial;
-          }
-
-          .controls {
-            flex: 1;
-            margin-left: 0.8em;
-          }
-
-        }
-      }
-    }
   }
 }
 
 // Desktop
-@media screen and (min-width: 1024px){
+@media screen and (min-width: 1024px) {
   .voltorbFlip {
     display: flex;
     flex-direction: row;
@@ -112,22 +46,6 @@
     }
     .board {
       flex: 0 0 48em;
-    }
-    .sidebar {
-      padding: 0.6em 0.4em;
-      flex: 0 0 20em;
-      .gameMenu {
-        display: block;
-        font-size: initial;
-        .inputs {
-          margin-left: 0;
-        }
-      }
-      .controls {
-        display: block;
-        padding-top: 0.8em;
-        text-align: right;
-      }
     }
   }
 }

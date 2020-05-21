@@ -4,7 +4,7 @@
   padding: 0.6em;
 
   .spaceBorder {
-    border: 0.4em solid #fff;
+    border: 0.4em solid var(--border);
     border-radius: 0.2em;
     height: 6.8em;
     width: 6.8em;
@@ -36,7 +36,7 @@
 
     .spaceFront {
       position: relative;
-      background-image: url('../images/card_bg.svg');
+      background-image: url('../../images/card_bg.svg');
       background-size: cover;
       transform: rotateY(0deg);
       z-index: 2;
@@ -50,7 +50,7 @@
         height: 1.5em;
         font-size: 1.2em;
         font-weight: 700;
-        color: #ffda35;
+        color: var(--border-selected);
         img {
           width: 100%;
         }
@@ -75,8 +75,8 @@
     }
 
     .spaceBack {
-      background: #b88783;
-      border: 0.2em solid #925253;
+      background: var(--space-back-bg);
+      border: 0.2em solid var(--space-back-border);
       transform: rotateY(180deg);
       display: flex;
       align-items: center;
@@ -86,7 +86,7 @@
       .spaceMultiplier {
         font-size: 2.8em;
         font-weight: 700;
-        color: #3d1714;
+        color: var(--text);
       }
 
       .spaceVoltorb {
@@ -116,8 +116,8 @@
     content: '';
     width: 1.8em;
     height: 1em;
-    border-top: 0.4em solid #fff;
-    border-bottom: 0.4em solid #fff;
+    border-top: 0.4em solid var(--border);
+    border-bottom: 0.4em solid var(--border);
     position: absolute;
     right: -0.9em;
     top: 3.1em;
@@ -126,8 +126,8 @@
     content: '';
     width: 1em;
     height: 1.8em;
-    border-left: 0.4em solid #fff;
-    border-right: 0.4em solid #fff;
+    border-left: 0.4em solid var(--border);
+    border-right: 0.4em solid var(--border);
     position: absolute;
     bottom: -0.9em;
     left: 3.1em;

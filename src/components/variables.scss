@@ -1,5 +1,42 @@
-$row_one: #ce4747;
-$row_two: #43c143;
-$row_three: #e7a339;
-$row_four: #397de7;
-$row_five: #a926e5;
+:root {
+  --primary-bg: #29a46a;
+  --primary-bg-border: #11935d;
+  --primary-bg-darker: #0a835e;
+  --primary-bg-darker-hover: #097957;
+  --primary-bg-darker-border: #2b453d;
+
+  --secondary-bg: #cd704a;
+  --secondary-bg-border: #f09b7f;
+
+  --info-bg: #fff;
+  --info-bg-border: #a0c0b0;
+
+  --highlight-color: #ffda35;
+  
+  --row-one-primary: #ce4747;
+  --row-two-primary: #43c143;
+  --row-three-primary: #e7a339;
+  --row-four-primary: #397de7;
+  --row-five-primary: #a926e5;
+
+  --content-bg: #fff;
+  --text: #333;
+  --border: #fff;
+  --border-selected: --highlight-color;
+  
+  --space-back-bg: #b88783;
+  --space-back-border: #925253;
+
+  --button-primary-bg: #188060;
+  --button-primary-bg-hover: #1b6e55;
+  --button-primary-text: #fff;
+  
+  --button-secondary-bg: #3567e0;
+  --button-secondary-bg-hover: #305ecc;
+  --button-secondary-border: #3f4040;
+  --button-secondary-text: #fff;
+
+  --button-default-bg: #444;
+  --button-default-bg-hover: #3a3a3a;
+  --button-default-text: #fff;
+}
