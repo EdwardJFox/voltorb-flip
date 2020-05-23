@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "81a3644c8798eb5a7ab67d31ccfb54c7",
+    "revision": "c3d8298879b141e4a5701b6305558290",
     "url": "/voltorb-flip/index.html"
   },
   {
-    "revision": "32541aff3cffdffe3153",
-    "url": "/voltorb-flip/static/css/main.a50f25ac.chunk.css"
+    "revision": "3cbd1469fbda5febac90",
+    "url": "/voltorb-flip/static/css/main.d2e80878.chunk.css"
   },
   {
-    "revision": "bcff730f1e5cfba761d6",
-    "url": "/voltorb-flip/static/js/2.7b136161.chunk.js"
+    "revision": "9e75a49b0ee6322928da",
+    "url": "/voltorb-flip/static/js/2.22b3aeca.chunk.js"
   },
   {
     "revision": "e88a3e95b5364d46e95b35ae8c0dc27d",
-    "url": "/voltorb-flip/static/js/2.7b136161.chunk.js.LICENSE.txt"
+    "url": "/voltorb-flip/static/js/2.22b3aeca.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "32541aff3cffdffe3153",
-    "url": "/voltorb-flip/static/js/main.81a4b1c3.chunk.js"
+    "revision": "3cbd1469fbda5febac90",
+    "url": "/voltorb-flip/static/js/main.4313aa6e.chunk.js"
   },
   {
     "revision": "0f5c87014e0107a880a1",
