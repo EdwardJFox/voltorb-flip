@@ -1,5 +1,5 @@
 import React from 'react';
-import AnimatedNumber from "animated-number-react";
+import CountUp from 'react-countup';
 
 import './GameScore.scss';
 
@@ -9,37 +9,32 @@ interface GameScoreInterface {
   highScore: number;
 }
 
-const GameScore = ({ totalScore, currentRoundScore, highScore }: GameScoreInterface) => {
-  const formatScore = (value: number) => Math.round(value);
-
-  return (
-    <div className="gameScore">
-      <div className="gameScoreBorder current">
-        <div className="gameScoreInner">
-          <div className="name">Round points</div>
-          <div className="score">
-            <AnimatedNumber value={currentRoundScore} formatValue={formatScore} />
-          </div>
-        </div>
-      </div>
-      <div className="gameScoreBorder total">
-        <div className="gameScoreInner">
-          <div className="name">Total points</div>
-          <div className="score">
-            <AnimatedNumber value={totalScore} formatValue={formatScore} />
-          </div>
-        </div>
-      </div>
-      <div className="gameScoreBorder highScore">
-        <div className="gameScoreInner">
-          <div className="name">High score</div>
-          <div className="score">
-            <AnimatedNumber value={highScore} formatValue={formatScore} />
-          </div>
+const GameScore = ({ totalScore, currentRoundScore, highScore }: GameScoreInterface) =>
+  <div className="gameScore">
+    <div className="gameScoreBorder current">
+      <div className="gameScoreInner">
+        <div className="name">Round points</div>
+        <div className="score">
+          <CountUp end={currentRoundScore} duration={0.5} />
         </div>
       </div>
     </div>
-  )
-}
+    <div className="gameScoreBorder total">
+      <div className="gameScoreInner">
+        <div className="name">Total points</div>
+        <div className="score">
+          <CountUp end={totalScore} duration={1} />
+        </div>
+      </div>
+    </div>
+    <div className="gameScoreBorder highScore">
+      <div className="gameScoreInner">
+        <div className="name">High score</div>
+        <div className="score">
+          <CountUp end={highScore} duration={1.4} />
+        </div>
+      </div>
+    </div>
+  </div>
 
 export default GameScore;

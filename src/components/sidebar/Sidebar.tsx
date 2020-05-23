@@ -33,7 +33,9 @@ const Sidebar = ({ difficulty, totalPoints, currentPoints, highScore, handleInpu
         </div>
       </div>
     </div>
-    <footer>Created by <a href="https://twitter.com/icemaz" target="_blank" rel="noopener noreferrer">@icemaz</a> - <a href="https://github.com/EdwardJFox/voltorb-flip" target="_blank" rel="noopener noreferrer">GitHub</a></footer>
+    <footer>
+      Created by <a href="https://twitter.com/icemaz" target="_blank" rel="noopener noreferrer">@icemaz</a> - <a href="https://github.com/EdwardJFox/voltorb-flip" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </footer>
   </div>
 
 export default Sidebar;

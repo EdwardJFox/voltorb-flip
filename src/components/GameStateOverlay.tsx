@@ -19,7 +19,7 @@ const GameIntermissionOverlay = ({ handleNextRoundClick }: any) =>
 
 const GameRoundLostOverlay = ({ handleNextRoundClick, handleRestartClick }: any) =>
   <React.Fragment>
-    <h2>Oh no a Voltorb!</h2>
+    <h2>Oh no, a Voltorb!</h2>
     <div className="btnGroup">
       <Button handleOnClick={handleRestartClick} type="default">Restart</Button>
       <Button handleOnClick={handleNextRoundClick} type="primary">Next round</Button>

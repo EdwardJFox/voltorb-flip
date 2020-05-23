@@ -15,14 +15,14 @@ const BoardSpace = ({ space, handleSpaceClick }: SpaceInterface) =>
   <div className={`space boardSpace ${space.state === SpaceStateEnum.Hidden ? 'hidden' : 'flipped' }`}>
     <div className="spaceBorder">
       <div className="spaceInner">
-        <div className="spaceFront" onClick={(e) => handleSpaceClick(space)}>
+        <div className="spaceBack" onClick={(e) => handleSpaceClick(space)} data-testid="boardSpaceBack">
           <div className="markers">
             { space.markers.map((marker: SpaceMarkersEnum) => <BoardSpaceMarker marker={marker} />) }
           </div>
         </div>
-        <div className="spaceBack">
+        <div className="spaceFront">
           { space.state === SpaceStateEnum.Flipped &&
-            BoardSpaceBackContent(space)
+            BoardSpaceFrontContent(space)
           }
         </div>
       </div>
@@ -43,7 +43,7 @@ const BoardSpaceMarkerContent = (marker: SpaceMarkersEnum) => {
   }
 }
 
-const BoardSpaceBackContent = (space: Space) => {
+const BoardSpaceFrontContent = (space: Space) => {
   switch(space.type) {
     case SpaceTypeEnum.Voltorb:
       return (

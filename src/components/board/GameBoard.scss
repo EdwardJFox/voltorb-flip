@@ -1,4 +1,4 @@
-.board {
+#board {
   width: 100%;
 }
 .bottomSummary {
@@ -6,7 +6,7 @@
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
-.board, .bottomSummary {
+#board, .bottomSummary {
   .boardRow, .spacesSummary, .boardRow, .boardSpace {
     &:nth-child(1) {
       .boardSpace:before, .spaceSummaryInner, &:after {

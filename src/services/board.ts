@@ -9,13 +9,13 @@ export enum BoardStatusEnum {
 }
 
 class Board {
-  difficulty: number;
+  _difficulty: number;
   spaces: Space[][];
   width = 5;
   height = 5;
 
   constructor(difficulty: number) {
-    this.difficulty = difficulty;
+    this._difficulty = difficulty;
     this.spaces = [];
   }
 
@@ -86,6 +86,14 @@ class Board {
 
   public getCurrentRoundPoints(): number {
     return this.flippedMultiplierSpaces().reduce((total, space) => total * space.type, 1);
+  }
+
+  public get difficulty(): number {
+    return this._difficulty;
+  }
+  
+  public set difficulty(difficulty: number) {
+    this._difficulty = difficulty;
   }
 
   // Query methods

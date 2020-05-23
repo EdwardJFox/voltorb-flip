@@ -34,7 +34,7 @@
       left: 0;
     }
 
-    .spaceFront {
+    .spaceBack {
       position: relative;
       background-image: url('../../images/card_bg.svg');
       background-size: cover;
@@ -74,7 +74,7 @@
       }
     }
 
-    .spaceBack {
+    .spaceFront {
       background: var(--space-back-bg);
       border: 0.2em solid var(--space-back-border);
       transform: rotateY(180deg);

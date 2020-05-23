@@ -37,7 +37,7 @@ class Game {
         this.state = GameStateEnum.Playing;
         break;
       case BoardStatusEnum.Complete:
-        this.state = GameStateEnum.Intermission;
+        this.startIntermission();
         break;
       case BoardStatusEnum.Lost:
         this.state = GameStateEnum.RoundLost;

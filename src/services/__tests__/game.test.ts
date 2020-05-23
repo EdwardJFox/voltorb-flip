@@ -40,11 +40,13 @@ describe('Game class', () => {
     describe('with the board having a status of complete', () => {
       beforeEach(() => {
         jest.spyOn(game.board, 'checkBoard').mockReturnValue(BoardStatusEnum.Complete);
-        game.updateBoardState();
       });
 
       it('changes the game state to show that the round is complete and moved to an intermission', () => {
+        jest.spyOn(game, 'startIntermission');
+        game.updateBoardState();
         expect(game.state).toEqual(GameStateEnum.Intermission);
+        expect(game.startIntermission).toBeCalled();
       });
     });
 

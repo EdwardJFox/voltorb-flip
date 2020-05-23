@@ -11,13 +11,10 @@ export interface BoardRowInterface {
   rowIndex: number;
 }
 
-const BoardRow = ({ spaces, handleSpaceClick, rowIndex }: BoardRowInterface) => {
-  return (
-    <div className="boardRow">
-      { spaces.map((space, columnIndex) => <BoardSpace key={`space_${rowIndex}_${columnIndex}`} space={space} handleSpaceClick={handleSpaceClick} />) }
-      <BoardSpacesSummary spaces={spaces} />
-    </div>
-  )
-}
+const BoardRow = ({ spaces, handleSpaceClick, rowIndex }: BoardRowInterface) =>
+  <div className="boardRow">
+    { spaces.map((space, columnIndex) => <BoardSpace key={`space_${rowIndex}_${columnIndex}`} space={space} handleSpaceClick={handleSpaceClick} />) }
+    <BoardSpacesSummary spaces={spaces} />
+  </div>
 
 export default BoardRow;

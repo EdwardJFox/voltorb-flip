@@ -27,8 +27,7 @@ const setHighScoreInStorage = (score: number) => {
 }
 
 const VoltorbFlip = () => {
-  const [game, setGame] = useState(new Game());
-  // const [seed, setSeed] = useState(game.seed);
+  const [game, setGame] = useState(() => new Game());
   const [showOverlay, setShowOverlay] = useState(false);
   const [inputMode, setInputMode] = useState(InputModeEnum.Flipping);
   const [highScore, setHighScore] = useState(getHighScoreStorage());
@@ -50,7 +49,7 @@ const VoltorbFlip = () => {
     if(space.state === SpaceStateEnum.Hidden && game.state === GameStateEnum.Playing) {
       space.flip();
       game.updateBoardState();
-      console.log(game.state);
+
       if(game.state !== GameStateEnum.Playing) {
         if(game.totalPoints > highScore) {
           setHighScoreInStorage(game.totalPoints);
